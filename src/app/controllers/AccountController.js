@@ -41,8 +41,7 @@ class AccountController {
             //set address
             req.session.user.address = req.body.address
             res.locals.lcuser = req.session.user
-
-            
+           
              res.redirect('/account/profile')
          })
          .catch(next)
@@ -71,6 +70,40 @@ class AccountController {
     }
     changepass(req,res,next){
         res.render('account/changepassword')
+    }
+    changepasspost(req,res,next)
+    {
+        User.findOne({_id:req.params.id})
+        .then(user =>{
+            bcrypt.compare(req.body.oldpassword, user.password, (err, result) => {
+                if(result)
+                {  
+                    bcrypt.hash(req.body.newpassword, 10, function (err, hash) {
+                        if (err) { return next(err); }
+
+                        const new_password = hash;
+                        const new_password_confirm = hash;
+
+                        User.updateOne({ _id: req.params.id},{
+                            password: new_password,
+                            password_confirm: new_password_confirm
+                        })
+                        .then(res.redirect('/account/profile'))
+                        .catch(next)
+  
+                    })
+                    
+                }
+                else
+                {
+                    res.render('account/changepassword',{
+                        err: 'old password incorrect',
+                    })
+                }
+
+                 
+            })
+        }) 
     }
 
     //login function
@@ -116,8 +149,9 @@ class AccountController {
                     user.address = 'none'
                     user.save()
                         .then( ()=> {
-                            
+
                             res.redirect('/account/login')
+
                         })
                         .catch(next)
                 })

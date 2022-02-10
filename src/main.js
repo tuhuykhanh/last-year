@@ -10,6 +10,10 @@ const methodOverride = require('method-override');
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const passport = require('passport');
+
+
+
 const morgan = require('morgan')
 
 //midleware
@@ -36,6 +40,9 @@ app.use(session({
     )
   }));
 app.use(checkAuthen.checkLocalAuthen);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // app.use( morgan('combined'));
 

@@ -259,6 +259,7 @@
     flex-wrap: wrap;
     border-radius: 1rem;
     min-height: 35rem;
+    z-index: 1;
 
     .container-info-left
     {
@@ -373,7 +374,7 @@
     flex-wrap: wrap;
     border-radius: 1rem;
     min-height: 35rem;
-
+    z-index: 1;
 
     .container-info-left-normal
     {

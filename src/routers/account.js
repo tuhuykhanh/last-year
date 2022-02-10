@@ -43,7 +43,8 @@ router.get('/profile/edit',checklogout.requiresLogin,accountConstroller.profileE
 router.put('/profile/edit/:id',upload.single('avatar'),checklogout.requiresLogin,accountConstroller.update);
 
 //change password form 
-router.get('/profile/changepass', accountConstroller.changepass)
+router.get('/profile/changepass' ,checklogout.requiresLogin, accountConstroller.changepass)
+router.post('/profile/changepass/:id',checklogout.requiresLogin, accountConstroller.changepasspost)
 
 
 

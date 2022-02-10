@@ -392,7 +392,8 @@
   background-color: #D5F5E3;
   flex-wrap: wrap;
   border-radius: 1rem;
-  min-height: 35rem; }
+  min-height: 35rem;
+  z-index: 1; }
   .container-profile .container-info-left {
     flex: 1 1 10rem;
     text-align: center;
@@ -470,7 +471,8 @@
   background-color: #D5F5E3;
   flex-wrap: wrap;
   border-radius: 1rem;
-  min-height: 35rem; }
+  min-height: 35rem;
+  z-index: 1; }
   .container-profile-normal .container-info-left-normal {
     flex: 1 1 10rem;
     text-align: center;
@@ -559,32 +561,43 @@ html {
     background-color: #9FE2BF;
     border-radius: 10rem; }
 
+body {
+  min-height: 500vh; }
+
+.container-body {
+  padding-top: 10rem; }
+
 .section {
   padding: 5rem 9%; }
 
-.top {
+.header .top {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
   background-color: var(--bgc);
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 10rem;
-  padding: 0 9%; }
-  .top .logo {
+  padding: 0 9%;
+  z-index: 100; }
+  .header .top .logo {
     font-size: 2.5rem;
     font-weight: bold; }
-    .top .logo span {
+    .header .top .logo span {
       color: #232323; }
-  .top .search-form {
+  .header .top .search-form {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.6);
     inset: 0;
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000000; }
-    .top .search-form.active {
+    z-index: 10; }
+    .header .top .search-form.active {
       display: flex; }
-    .top .search-form .container-form {
+    .header .top .search-form .container-form {
       width: 50rem;
       height: 12rem;
       background-color: #fff;
@@ -595,7 +608,7 @@ html {
       justify-content: center;
       align-items: flex-end;
       animation: slideFromTop .25s linear; }
-      .top .search-form .container-form form {
+      .header .top .search-form .container-form form {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -603,17 +616,17 @@ html {
         border: 2px solid black;
         padding: .5rem;
         border-radius: .5rem; }
-        .top .search-form .container-form form input {
+        .header .top .search-form .container-form form input {
           width: 100%;
           height: 4rem;
           font-size: 2rem; }
-        .top .search-form .container-form form button {
+        .header .top .search-form .container-form form button {
           font-size: 2.5rem;
           cursor: pointer;
           background-color: #9FE2BF;
           padding: 0 1rem;
           border-radius: inherit; }
-      .top .search-form .container-form .fa-times {
+      .header .top .search-form .container-form .fa-times {
         position: absolute;
         top: .5rem;
         right: .5rem;
@@ -625,17 +638,17 @@ html {
         align-items: center;
         font-size: 3rem;
         cursor: pointer; }
-        .top .search-form .container-form .fa-times:hover {
+        .header .top .search-form .container-form .fa-times:hover {
           background-color: #9FE2BF; }
-  .top .navbar {
+  .header .top .navbar {
     display: flex;
     align-items: center;
     gap: 2.5rem;
     position: relative; }
-    .top .navbar a {
+    .header .top .navbar a {
       font-size: 2.5rem;
       color: var(--color); }
-    .top .navbar .line {
+    .header .top .navbar .line {
       width: 0;
       height: .5rem;
       position: absolute;
@@ -643,11 +656,22 @@ html {
       left: 0;
       bottom: 0;
       border-radius: 10rem; }
-  .top .control {
+  .header .top .btn-bars {
+    width: 5rem;
+    height: 4rem;
+    font-size: 2.5rem;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; }
+    .header .top .btn-bars:hover {
+      background-color: orange; }
+  .header .top .control {
     display: flex;
     align-items: center;
-    gap: 1.2rem; }
-    .top .control .search-btn {
+    gap: 1rem; }
+    .header .top .control .search-btn {
       width: 5rem;
       height: 4rem;
       font-size: 2.5rem;
@@ -656,32 +680,34 @@ html {
       align-items: center;
       border-radius: .5rem;
       cursor: pointer; }
-      .top .control .search-btn i {
+      .header .top .control .search-btn.active {
+        animation: rotate .5s linear; }
+      .header .top .control .search-btn i {
         color: #7B241C; }
-    .top .control .handle-logInOut {
+    .header .top .control .handle-logInOut {
       display: flex;
       gap: 0.5rem;
       align-items: center;
       width: 16rem;
       justify-content: center; }
-      .top .control .handle-logInOut .register {
+      .header .top .control .handle-logInOut .register {
         background-color: #2C3E50; }
-        .top .control .handle-logInOut .register a {
+        .header .top .control .handle-logInOut .register a {
           color: #fff; }
-      .top .control .handle-logInOut .signin {
+      .header .top .control .handle-logInOut .signin {
         background-color: #2ECC71; }
-        .top .control .handle-logInOut .signin a {
+        .header .top .control .handle-logInOut .signin a {
           color: #fff; }
-    .top .control .interface {
+    .header .top .control .interface {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       position: relative;
-      width: 125px;
+      width: 5rem;
       font-size: 2rem; }
-      .top .control .interface:hover .control {
+      .header .top .control .interface:hover .control {
         display: flex; }
-      .top .control .interface .control {
+      .header .top .control .interface .control {
         position: absolute;
         bottom: -5rem;
         background-color: #A3E4D7;
@@ -693,27 +719,27 @@ html {
         justify-content: space-evenly;
         padding: 0 .5rem;
         padding: 0.5rem; }
-        .top .control .interface .control .default.active {
+        .header .top .control .interface .control .default.active {
           border: 2px solid #641E16;
           border-radius: inherit; }
-        .top .control .interface .control .dark.active {
+        .header .top .control .interface .control .dark.active {
           border: 2px solid #641E16;
           border-radius: inherit; }
-        .top .control .interface .control .light.active {
+        .header .top .control .interface .control .light.active {
           border: 2px solid #641E16;
           border-radius: inherit; }
-        .top .control .interface .control .fas {
+        .header .top .control .interface .control .fas {
           font-size: 2rem;
           background-color: #fff;
           padding: 0.5rem;
           border-radius: .5rem; }
-        .top .control .interface .control::before {
+        .header .top .control .interface .control::before {
           content: '';
           position: absolute;
           width: 100%;
           height: 1rem;
           top: -1rem; }
-    .top .control .info-user {
+    .header .top .control .info-user {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -721,7 +747,7 @@ html {
       width: 16rem;
       position: relative;
       cursor: pointer; }
-      .top .control .info-user .image {
+      .header .top .control .info-user .image {
         display: block;
         width: 5rem;
         height: 5rem;
@@ -729,21 +755,21 @@ html {
         flex-shrink: 0;
         overflow: hidden;
         cursor: pointer; }
-        .top .control .info-user .image img {
+        .header .top .control .info-user .image img {
           width: 100%;
           height: 100%;
           object-fit: cover; }
-      .top .control .info-user .name {
+      .header .top .control .info-user .name {
         overflow: hidden; }
-        .top .control .info-user .name h3 {
+        .header .top .control .info-user .name h3 {
           font-size: 1.5rem;
           font-weight: 500;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis; }
-      .top .control .info-user:hover .info-user-control {
+      .header .top .control .info-user:hover .info-user-control {
         display: block; }
-      .top .control .info-user .info-user-control {
+      .header .top .control .info-user .info-user-control {
         position: absolute;
         width: 100%;
         background-color: #A3E4D7;
@@ -753,15 +779,15 @@ html {
         padding: 1rem;
         font-size: 1.5rem;
         display: none;
-        z-index: 5; }
-        .top .control .info-user .info-user-control:before {
+        z-index: 10; }
+        .header .top .control .info-user .info-user-control:before {
           content: '';
           position: absolute;
           width: 100%;
           height: 1rem;
           left: 0;
           top: -1rem; }
-        .top .control .info-user .info-user-control .user {
+        .header .top .control .info-user .info-user-control .user {
           width: 14rem;
           height: 4rem;
           background-color: #fff;
@@ -773,12 +799,12 @@ html {
           color: black;
           font-weight: 500;
           border: 2px solid black; }
-          .top .control .info-user .info-user-control .user:hover {
+          .header .top .control .info-user .info-user-control .user:hover {
             background-image: linear-gradient(to right, #B24592, #F15F79);
             color: #fff; }
-        .top .control .info-user .info-user-control a {
+        .header .top .control .info-user .info-user-control a {
           display: block; }
-        .top .control .info-user .info-user-control .signOut {
+        .header .top .control .info-user .info-user-control .signOut {
           position: absolute;
           width: 14rem;
           height: 3rem;
@@ -789,16 +815,16 @@ html {
           cursor: pointer;
           background-color: #E74C3C;
           border-radius: inherit; }
-          .top .control .info-user .info-user-control .signOut:hover {
+          .header .top .control .info-user .info-user-control .signOut:hover {
             background-color: #F30C08; }
-          .top .control .info-user .info-user-control .signOut a {
+          .header .top .control .info-user .info-user-control .signOut a {
             color: #fff; }
 
 #toast {
   position: fixed;
   top: 2rem;
   right: 2rem;
-  z-index: 999999; }
+  z-index: 1000; }
 
 .container-toast {
   display: flex;
@@ -868,14 +894,39 @@ html {
 .container--error .container__icon {
   color: rgba(255, 0, 0, 0.63); }
 
+.home .huykhanh {
+  width: 5rem;
+  height: 5rem;
+  background-color: green;
+  border-radius: .5rem; }
+
 @media (max-width: 1200px) {
+  .top {
+    padding: 3rem; }
+  section {
+    padding: 3rem 2rem; } }
+
+@media (max-width: 991px) {
   html {
     font-size: 55%; }
-  .top {
-    padding: 0 6%; }
-  .section {
-    padding: 5rem 5%; } }
+  .top .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: red;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+    .top .navbar.active {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      background-color: #fff; }
+    .top .navbar .line {
+      display: none; } }
 
 @media (max-width: 450px) {
   html {
     font-size: 50%; } }
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg); } }

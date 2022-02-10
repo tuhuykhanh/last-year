@@ -1,3 +1,33 @@
+//header scroll 
+var lastscrolltop  = 0;
+var header = document.querySelector('.header .top')
+
+window.addEventListener('scroll', function(){
+    let scrolltop = window.pageYOffset 
+
+    if(scrolltop > lastscrolltop)
+    {
+        header.style.top = "-10rem";
+    }else
+    {   
+        header.style.top = '0'; 
+    }
+    lastscrolltop = scrolltop
+})
+
+        
+ //// HANDLE CLICK EVENT ////
+
+//barsbtn  click 
+
+const barsbtn = document.querySelector('.btn-bars');
+const  navbar  = document.querySelector('.top .navbar')
+barsbtn.onclick =()=>
+{
+    navbar.classList.toggle('active');
+}
+
+
 
 //line slide
 const navbtn  = document.querySelectorAll('.top .navbar a')
@@ -20,17 +50,17 @@ const inputSearch = document.querySelector('.top .search-form .container-form fo
 
 ///test
 
-
-
-
 searchBtn.onclick = () =>
 {
     formSearch.classList.add('active');
+    searchBtn.classList.add('active');
     inputSearch.focus();
 }
 closeBtnSearch.onclick = ()=>
 {
     formSearch.classList.remove('active')
+    searchBtn.classList.remove('active');
+
 }
 
 window.onscroll =()=>
@@ -66,6 +96,90 @@ darkBtn.onclick = () =>{
     darkBtn.classList.add('active')
     console.log('dark')
 }
+
+
+///toast message
+function clickclick({ title = '', message = '', type = 'info', duration = 2000 }) {
+    const main = document.querySelector('#toast')
+    if (main) {
+
+        const toast = document.createElement('div');
+        const show = duration+1000;
+    
+       //auto remove toast
+       const autoremoveID =  setTimeout(function(){
+            main.removeChild(toast);
+        },show)
+       
+        //click remove toast
+       
+        toast.onclick=(e)=>
+        {
+            if(e.target.closest('.container__close'))
+            {
+                main.removeChild(toast);
+                clearTimeout(autoremoveID);
+            }
+        }
+        const icons = {
+            success: 'fas fa-check-circle',
+            info: 'fas fa-info-circle',
+            warning: 'fas fa-exclamation-circle',
+            error: 'fas fa-exclamation-circle',
+        }
+
+        const icon = icons[type]
+        const delay = (duration/1000).toFixed(2)
+
+        toast.classList.add('container-toast', `container--${type}`);
+        toast.style.animation = ` slideleft .3s linear,fadeout 1s linear forwards ${delay}s`;
+        toast.innerHTML = `<div class="container__icon">
+            <i class=" ${icon}"></i>
+        </div>
+        <div class="container__content">
+            <h2>${title}</h2>
+            <p>${message}</p>
+        </div>
+        <div class="container__close">
+            <i class="fas fa-times"></i>
+        </div>`;
+        main.appendChild(toast);
+    }
+}
+function success() {
+
+    clickclick(
+        {
+            title: 'success',
+            message: 'here is notification ',
+            type: 'success',
+            duration: 2000
+        }
+    )
+}
+function warning() {
+
+    clickclick(
+        {
+            title: 'warning',
+            message: 'here is warning ',
+            type: 'warning',
+            duration: 2000
+        }
+    )
+}
+function error(){
+   
+    clickclick(
+        {
+            title: 'error',
+            message: 'here is error ',
+            type: 'error',
+            duration: 2000
+        }
+    )
+}
+
 
 
 
@@ -166,10 +280,10 @@ function Validator(options) {
 
                         return values;
                     }, {});
-                    options.onSubmit(formValues);
+                options.onSubmit(formValues);
                 }
                 // Trường hợp submit với hành vi mặc định
-                else {
+                else { 
                     formElement.submit();
                 }
             }
@@ -205,10 +319,7 @@ function Validator(options) {
 
 }
 
-// Định nghĩa rules
-// Nguyên tắc của các rules:
-// 1. Khi có lỗi => Trả ra message lỗi
-// 2. Khi hợp lệ => Không trả ra cái gì cả (undefined)
+
 Validator.isRequired = function (selector, message) {
     return {
         selector: selector,
@@ -256,87 +367,4 @@ window.onload =()=>{
     loadbox.style.display =  'none' ;
 }
 
-
-
-///toast message
-function clickclick({ title = '', message = '', type = 'info', duration = 2000 }) {
-    const main = document.querySelector('#toast')
-    if (main) {
-
-        const toast = document.createElement('div');
-        const show = duration+1000;
-    
-       //auto remove toast
-       const autoremoveID =  setTimeout(function(){
-            main.removeChild(toast);
-        },show)
-       
-        //click remove toast
-       
-        toast.onclick=(e)=>
-        {
-            if(e.target.closest('.container__close'))
-            {
-                main.removeChild(toast);
-                clearTimeout(autoremoveID);
-            }
-        }
-        const icons = {
-            success: 'fas fa-check-circle',
-            info: 'fas fa-info-circle',
-            warning: 'fas fa-exclamation-circle',
-            error: 'fas fa-exclamation-circle',
-        }
-
-        const icon = icons[type]
-        const delay = (duration/1000).toFixed(2)
-
-        toast.classList.add('container-toast', `container--${type}`);
-        toast.style.animation = ` slideleft .3s linear,fadeout 1s linear forwards ${delay}s`;
-        toast.innerHTML = `<div class="container__icon">
-            <i class=" ${icon}"></i>
-        </div>
-        <div class="container__content">
-            <h2>${title}</h2>
-            <p>${message}</p>
-        </div>
-        <div class="container__close">
-            <i class="fas fa-times"></i>
-        </div>`;
-        main.appendChild(toast);
-    }
-}
-function success() {
-
-    clickclick(
-        {
-            title: 'success',
-            message: 'here is notification ',
-            type: 'success',
-            duration: 2000
-        }
-    )
-}
-function warning() {
-
-    clickclick(
-        {
-            title: 'warning',
-            message: 'here is warning ',
-            type: 'warning',
-            duration: 2000
-        }
-    )
-}
-function error(){
-      
-    clickclick(
-        {
-            title: 'error',
-            message: 'here is error ',
-            type: 'error',
-            duration: 2000
-        }
-    )
-}
 

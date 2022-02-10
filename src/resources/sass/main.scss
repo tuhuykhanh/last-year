@@ -32,17 +32,33 @@ html
         border-radius: 10rem;
     }  
 }
+body
+{
+    min-height: 500vh;
+}
+.container-body
+{
+    padding-top: 10rem;
+}
 .section{
     padding: 5rem 9%;
 }
-.top
+.header
 {
+.top
+{   
+    position: fixed;
+    left: 0;
+    right: 0;
+    top:0;
     background-color: var(--bgc);
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 10rem;
     padding: 0 9%;
+    z-index: 100;
+
     .logo
     {
         font-size: 2.5rem;
@@ -60,7 +76,7 @@ html
                 display: none;
                 justify-content: center;
                 align-items: center;
-                z-index: 1000000;
+                z-index: 10;
                 &.active
                 {
                     display: flex;
@@ -126,11 +142,11 @@ html
             }
     .navbar
     {
-    
         display: flex;
         align-items: center;
         gap: 2.5rem;
         position: relative;
+
         a
         {
             font-size: 2.5rem;
@@ -147,11 +163,28 @@ html
             border-radius: 10rem;
         }
     }
+    .btn-bars{
+        width: 5rem;
+        height: 4rem;
+        font-size: 2.5rem;
+        border-radius: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:hover
+        {
+            background-color: orange;
+        }
+       
+    }
     .control
     {   
         display: flex;
         align-items: center;
-        gap: 1.2rem;
+        gap: 1rem;
+
+        
         
         .search-btn
         {
@@ -163,6 +196,12 @@ html
             align-items: center;
             border-radius: .5rem;  
             cursor: pointer;
+
+            &.active
+            {
+                animation: rotate .5s linear;
+
+            }
             i
             {
                 color: #7B241C;
@@ -176,8 +215,6 @@ html
                 align-items: center;
                 width: 16rem;
                 justify-content:center;
-                // display: none;
-
                 .register
                 {
                     background-color: #2C3E50 ;
@@ -202,7 +239,7 @@ html
             align-items: center;
             gap: 0.5rem;
             position: relative;
-            width: 125px;
+            width: 5rem;
             font-size: 2rem;
             &:hover  .control
             {
@@ -306,7 +343,7 @@ html
                 padding: 1rem;
                 font-size: 1.5rem;
                 display: none; 
-                z-index: 5;
+                z-index: 10;
                 &:before
                 {
                     content:'';
@@ -366,10 +403,11 @@ html
 
                 }
 
+             }
+
             }
-            
-        }
-    }  
+        }  
+    }
 }
 
 ///toast message / ///////////
@@ -378,7 +416,7 @@ html
     position: fixed;
     top: 2rem;
     right: 2rem;
-    z-index: 999999;
+    z-index: 1000;
 }
 
 .container-toast
@@ -476,8 +514,17 @@ html
   color: rgba(255, 0, 0, 0.63);
 }
 
+.home
+{
+    .huykhanh
+    {
+        width: 5rem;
+        height: 5rem;
+        background-color: green;
+        border-radius: .5rem;
 
-
+    }
+}
 
 
 
@@ -486,33 +533,77 @@ html
 
 @media (max-width:1200px)
 {
-    html
-    {
-        font-size: 55%;
-    }
-    .top
-    {
-        padding: 0 6%;
-    }
-    .section{
-        padding: 5rem 5%;
-    }
+    
+  
+    .top{
+        padding:3rem;
+     }
+  
+     section{
+        padding:3rem 2rem;
+     }
 }
-
-
 
 
 @media (max-width:991px)
 {
-  
+    html{
+        font-size: 55%;
+                
+        }
+        .top
+        {
+            .navbar
+            {
+                position: absolute;
+                top:100%; left:0; right:0;
+                flex-direction: column;
+                background-color: red;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+                &.active
+                {
+                    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                    background-color: #fff;
+                }
+                .line
+                {
+                    display: none;
+                }
+            }
+          
+            .control
+            {
+                .huykhanh
+                {
+                
+                }
+            }
+            
+        }
+
+      
+      
+    
 }
-@media (max-width:450px)
-{
-    html
-    {
-        font-size: 50%;
+
+
+
+
+
+@media (max-width:450px){
+
+    html{
+       font-size: 50%;
     }
-}
+ 
+ }
+
+ @keyframes rotate {
+        to{
+            transform: rotate(360deg)
+        }
+ }
 
 
 
