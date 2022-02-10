@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import './_variable';
+@import './_Account';
+
+*
+{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    font-family: 'Poppins', sans-serif;
+    transition: all .2s linear;
+    text-decoration: none;
+}
+html
+{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+   
+
+    &::-webkit-scrollbar
+    {
+        width: .5rem;
+    }
+    &::-webkit-scrollbar-thumb
+    {
+        background-color: #212F3C;
+        border-radius: 10rem;
+    }
+    &::-webkit-scrollbar-track
+    {
+        background-color: #9FE2BF ;
+        border-radius: 10rem;
+    }  
+}
+.section{
+    padding: 5rem 9%;
+}
+.top
+{
+    background-color: var(--bgc);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10rem;
+    padding: 0 9%;
+    .logo
+    {
+        font-size: 2.5rem;
+        font-weight: bold;
+        span
+        {
+            color: #232323;
+        }
+    }
+    .search-form
+            {
+                position:fixed;
+                background-color: rgba(0,0,0,.6);
+                inset: 0;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000000;
+                &.active
+                {
+                    display: flex;
+                }
+          
+                .container-form
+                {   
+                    width: 50rem;
+                    height: 12rem;
+                    background-color: #fff;
+                    border-radius: .5rem;
+                    position: relative;
+                    padding: 1.5rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    animation: slideFromTop .25s linear ;
+                    form{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        border: 2px solid black;
+                        padding: .5rem;
+                        border-radius: .5rem;
+                        
+                        input
+                        {
+                            width: 100%;
+                            height: 4rem;
+                            
+                            font-size: 2rem;
+                        }
+                        button
+                        {
+                           font-size: 2.5rem;
+                           cursor: pointer;
+                           background-color:#9FE2BF ;
+                           padding: 0 1rem;
+                           border-radius: inherit;
+                        }
+                    }
+                    .fa-times
+                    {
+                        position: absolute;
+                        top: .5rem;
+                        right: .5rem;
+                        width: 3rem;
+                        height: 3rem;
+                        border-radius: .5rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 3rem;
+                        cursor: pointer;
+                        &:hover
+                        {
+                            background-color: #9FE2BF ;
+                        }
+                        
+                    }
+                }
+            }
+    .navbar
+    {
+    
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        position: relative;
+        a
+        {
+            font-size: 2.5rem;
+            color: var(--color)
+        }
+        .line
+        {
+            width:0;
+            height: .5rem;
+            position:absolute;
+            background-image: linear-gradient( to right,#6a3093,#5691c8);
+            left:0;
+            bottom: 0;
+            border-radius: 10rem;
+        }
+    }
+    .control
+    {   
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        
+        .search-btn
+        {
+            width: 5rem;
+            height: 4rem; 
+            font-size: 2.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: .5rem;  
+            cursor: pointer;
+            i
+            {
+                color: #7B241C;
+            }
+            
+        }
+        .handle-logInOut
+            {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+                width: 16rem;
+                justify-content:center;
+                // display: none;
+
+                .register
+                {
+                    background-color: #2C3E50 ;
+                    a{
+                        color:#fff;
+                    }
+                }
+                .signin
+                {
+                    background-color: #2ECC71 ;
+                    a
+                    {
+                        color:#fff;
+                    }
+                }
+             
+            }
+      
+        .interface
+        {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            width: 125px;
+            font-size: 2rem;
+            &:hover  .control
+            {
+                display: flex;
+    
+            }
+            .control
+            {
+                position: absolute;
+                bottom: -5rem;
+                background-color: #A3E4D7 ;
+                width: 120%;
+                height: 4rem;
+                border-radius:inherit;
+                display: none;
+                align-items: center;
+                justify-content:  space-evenly ;
+                padding: 0 .5rem;
+                padding: 0.5rem;
+                .default.active
+                {
+                    border: 2px solid#641E16 ;
+                    border-radius: inherit;
+                }
+                .dark.active
+                {
+                    border: 2px solid#641E16 ;
+                    border-radius: inherit;
+                }
+                .light.active
+                {
+                    border: 2px solid#641E16 ;
+                    border-radius: inherit;
+                }
+                .fas
+                {
+                    font-size: 2rem;
+                    background-color: #fff;
+                    padding: 0.5rem;
+                    border-radius: .5rem;
+                }
+                &::before
+                {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 1rem;
+                    top:-1rem;
+                }
+            }
+        }
+        .info-user
+        {   
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            width: 16rem;
+            position: relative;
+            cursor: pointer;
+            .image
+            {
+                display: block;
+                width: 5rem;
+                height: 5rem;
+                border-radius: 50%;
+                flex-shrink: 0;
+                overflow: hidden;
+                cursor: pointer;
+                img
+                {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }      
+            }
+            .name
+            {
+                overflow: hidden;
+                h3
+                {
+                    font-size: 1.5rem;
+                    font-weight: 500 ;
+                    overflow: hidden;
+                    white-space: nowrap; 
+                    text-overflow: ellipsis;
+                }
+            }
+            &:hover .info-user-control{
+                display: block;     
+            }
+        
+            .info-user-control
+            {
+                position: absolute;
+                width: 100%;
+                background-color: #A3E4D7 ;
+                bottom: -12.5rem;
+                min-height: 12rem;
+                border-radius: .5rem;
+                padding: 1rem;
+                font-size: 1.5rem;
+                display: none; 
+                z-index: 5;
+                &:before
+                {
+                    content:'';
+                    position:absolute;
+                    width: 100%;
+                    height: 1rem;
+                    left: 0;
+                    top: -1rem;
+
+                }
+                .user
+                {
+                    width: 14rem;
+                    height: 4rem;
+                    background-color: #fff;
+                    border-radius: inherit;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: .5rem;
+                    color:black;
+                    font-weight: 500;
+                    border: 2px solid black;
+
+                    &:hover
+                    {
+                        background-image: linear-gradient(to right,#B24592,#F15F79);
+                        color: #fff;
+                    }
+                    
+                }
+                a
+                {
+                    display: block;
+                }   
+                .signOut
+                {
+                   position: absolute;
+                    width: 14rem;
+                    height: 3rem;
+                    bottom: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    background-color: #E74C3C;
+                    border-radius: inherit;
+
+                    &:hover
+                    {
+                        background-color: #F30C08 ;
+                    }
+                    a
+                    {
+                        color: #fff;
+                    }
+
+                }
+
+            }
+            
+        }
+    }  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:1200px)
+{
+    html
+    {
+        font-size: 55%;
+    }
+    .top
+    {
+        padding: 0 6%;
+    }
+    .section{
+        padding: 5rem 5%;
+    }
+}
+
+
+
+
+@media (max-width:991px)
+{
+  
+}
+@media (max-width:450px)
+{
+    html
+    {
+        font-size: 50%;
+    }
+}
+
+
+
+
+

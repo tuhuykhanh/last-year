@@ -1,0 +1,75 @@
+<div class="top">
+    <div class="logo">
+        <a href="/"> HUY<span>KHANH</span></a>
+    </div>
+
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <a href="/">Home</a>
+        <a href="/">Home</a>
+        <div class="line"></div>
+    </nav>
+    <div class="search-form">
+        <div class="container-form">
+            <div class="fas fa-times"></div>
+            <form method="" action="">
+                <input name="keyword" type="text" placeholder="type hear">
+                <button type="submit">search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="control">
+
+        <div class="search-btn btn">
+            <i class="fas fa-search">
+            </i>
+        </div>
+
+        <div class="interface btn">
+            theme
+            <div class="fas fa-sliders-h"></div>
+
+            <div class="control">
+                <div class="default themeBtn active">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="dark themeBtn">
+                    <i class="fas fa-cloud-moon"></i>
+                </div>
+                <div class="light themeBtn">
+                    <i class="fas fa-cloud-sun"></i>
+                </div>
+            </div>
+        </div>
+
+       {{#if lcisLogged}}
+        <div class="info-user">
+            <div class="image">
+                <img src="/{{lcuser.avatar}}"
+                    alt="image">
+            </div>
+            <div class="info-user-control">
+                <a class="user" href="/account/profile"> <i class="fas fa-user-alt"></i>my profile</a>
+
+                <div class="signOut">
+                    <a href="/account/logout"><i class="fas fa-sign-out-alt"></i> log out</a>
+                </div>
+            </div>
+            <div class="name">
+                <h3>{{lcuser.username}}</h3>
+            </div>
+        </div>
+      {{else}}
+         <div class="handle-logInOut">
+            <div class="signin btn">
+                <a href="/account/login">sign in</a>
+            </div>
+            <div class="register btn">
+                <a href="/account/register">register</a>
+            </div>
+        </div>
+     {{/if}}
+    </div>
+
+</div>
