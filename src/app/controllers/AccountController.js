@@ -20,6 +20,8 @@ class AccountController {
     
     //update user from user
     update(req,res,next){
+        
+
         User.updateOne({ _id: req.params.id},{
             username: req.body.username,
             avatar: req.file.path.split('\\').slice(5,7).join('/'),
@@ -28,6 +30,7 @@ class AccountController {
          .then( ()=>{ 
             //update session
             //set name
+             
             req.session.user.username = req.body.username
             res.locals.lcuser.username = req.session.user.username
             
@@ -35,7 +38,11 @@ class AccountController {
             req.session.user.avatar = req.file.path.split('\\').slice(5,7).join('/')
             res.locals.lcuser = req.session.user
 
-        
+            //set address
+            req.session.user.address = req.body.address
+            res.locals.lcuser = req.session.user
+
+            
              res.redirect('/account/profile')
          })
          .catch(next)
@@ -61,6 +68,9 @@ class AccountController {
     //form reset password
     resetpassword(req, res, next) {
         res.render('account/resetpassword')
+    }
+    changepass(req,res,next){
+        res.render('account/changepassword')
     }
 
     //login function
@@ -102,9 +112,11 @@ class AccountController {
                     user.password = hash;
                     user.password_confirm = hash;
                     //default avatar
-                    user.avatar = 'uploads/avatar-1644396883170-37070774.jpg'
+                    user.avatar = 'uploads/avatar-1644396883170-37070774.jpg';
+                    user.address = 'none'
                     user.save()
                         .then( ()=> {
+                            
                             res.redirect('/account/login')
                         })
                         .catch(next)

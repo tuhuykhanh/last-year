@@ -42,6 +42,11 @@ router.get('/profile',checklogout.requiresLogin,accountConstroller.profile);
 router.get('/profile/edit',checklogout.requiresLogin,accountConstroller.profileEdit);
 router.put('/profile/edit/:id',upload.single('avatar'),checklogout.requiresLogin,accountConstroller.update);
 
+//change password form 
+router.get('/profile/changepass', accountConstroller.changepass)
+
+
+
 //log out
 router.get('/logout',
 checklogout.requiresLogin,

@@ -253,7 +253,90 @@ const loadbox = document.getElementById('load')
 
 
 window.onload =()=>{
-    loadbox.style.display =  none ;
+    loadbox.style.display =  'none' ;
 }
 
+
+
+///toast message
+function clickclick({ title = '', message = '', type = 'info', duration = 2000 }) {
+    const main = document.querySelector('#toast')
+    if (main) {
+
+        const toast = document.createElement('div');
+        const show = duration+1000;
+    
+       //auto remove toast
+       const autoremoveID =  setTimeout(function(){
+            main.removeChild(toast);
+        },show)
+       
+        //click remove toast
+       
+        toast.onclick=(e)=>
+        {
+            if(e.target.closest('.container__close'))
+            {
+                main.removeChild(toast);
+                clearTimeout(autoremoveID);
+            }
+        }
+        const icons = {
+            success: 'fas fa-check-circle',
+            info: 'fas fa-info-circle',
+            warning: 'fas fa-exclamation-circle',
+            error: 'fas fa-exclamation-circle',
+        }
+
+        const icon = icons[type]
+        const delay = (duration/1000).toFixed(2)
+
+        toast.classList.add('container-toast', `container--${type}`);
+        toast.style.animation = ` slideleft .3s linear,fadeout 1s linear forwards ${delay}s`;
+        toast.innerHTML = `<div class="container__icon">
+            <i class=" ${icon}"></i>
+        </div>
+        <div class="container__content">
+            <h2>${title}</h2>
+            <p>${message}</p>
+        </div>
+        <div class="container__close">
+            <i class="fas fa-times"></i>
+        </div>`;
+        main.appendChild(toast);
+    }
+}
+function success() {
+
+    clickclick(
+        {
+            title: 'success',
+            message: 'here is notification ',
+            type: 'success',
+            duration: 2000
+        }
+    )
+}
+function warning() {
+
+    clickclick(
+        {
+            title: 'warning',
+            message: 'here is warning ',
+            type: 'warning',
+            duration: 2000
+        }
+    )
+}
+function error(){
+      
+    clickclick(
+        {
+            title: 'error',
+            message: 'here is error ',
+            type: 'error',
+            duration: 2000
+        }
+    )
+}
 
