@@ -6,6 +6,17 @@
     --btnbg-regis: #979A9A;
     --btnbg-signin: #40E0D0;
 }
+
+.light-mode
+{
+     --bgc: #E5E7E9;
+}
+.dark-mode
+{
+   --bgc: #5D6D7E;
+}
+
+
 .btn
 {
     width: fit-content;
@@ -270,5 +281,12 @@
          
             opacity: 1;
     }
+}
+
+
+@keyframes rotate {
+  to{
+      transform: rotate(360deg)
+  }
 }
 

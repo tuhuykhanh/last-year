@@ -25,6 +25,14 @@ class CheckLogOut {
         res.locals.lcuser =  req.session.user
         next(); 
     }
+    
+    isAdmin(req, res, next){
+        if(res.locals.lcuser.role === 'admin'){
+            next()
+        }else{
+            res.send('not admin')
+        }
+    }
 
 }
 

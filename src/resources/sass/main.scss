@@ -16,7 +16,6 @@ html
     font-size: 62.5%;
     scroll-behavior: smooth;
    
-
     &::-webkit-scrollbar
     {
         width: .5rem;
@@ -146,7 +145,6 @@ body
         align-items: center;
         gap: 2.5rem;
         position: relative;
-
         a
         {
             font-size: 2.5rem;
@@ -168,10 +166,11 @@ body
         height: 4rem;
         font-size: 2.5rem;
         border-radius: .5rem;
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         cursor: pointer;
+
         &:hover
         {
             background-color: orange;
@@ -526,15 +525,9 @@ body
     }
 }
 
-
-
-
-
-
 @media (max-width:1200px)
 {
     
-  
     .top{
         padding:3rem;
      }
@@ -544,22 +537,37 @@ body
      }
 }
 
-
 @media (max-width:991px)
 {
     html{
-        font-size: 55%;
-                
+          font-size: 55%;       
         }
         .top
         {
+            height: 8rem !important;
+             padding:2rem !important;
+             .logo
+             {
+                 margin-right: 0.5rem;
+             }
+         
             .navbar
             {
-                position: absolute;
-                top:100%; left:0; right:0;
+                position: absolute !important; 
+                top:100%; left:0; right:0 !important;
                 flex-direction: column;
-                background-color: red;
+                background-color: #9FE2BF !important;
                 clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                align-items: flex-start !important;
+                padding: 5rem 2rem;
+                a{
+                    &:hover
+                    {
+                        letter-spacing: 1rem;
+                      
+                    }
+                }
+               
 
                 &.active
                 {
@@ -571,26 +579,16 @@ body
                     display: none;
                 }
             }
-          
             .control
-            {
-                .huykhanh
+            {     
+                gap:.5rem !important;
+                .btn-bars
                 {
-                
+                    display: flex !important;
                 }
             }
-            
-        }
-
-      
-      
-    
+      }  
 }
-
-
-
-
-
 @media (max-width:450px){
 
     html{
@@ -599,11 +597,9 @@ body
  
  }
 
- @keyframes rotate {
-        to{
-            transform: rotate(360deg)
-        }
- }
+
+
+
 
 
 

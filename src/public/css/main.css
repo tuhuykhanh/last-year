@@ -5,6 +5,12 @@
   --btnbg-regis: #979A9A;
   --btnbg-signin: #40E0D0; }
 
+.light-mode {
+  --bgc: #E5E7E9; }
+
+.dark-mode {
+  --bgc: #5D6D7E; }
+
 .btn {
   width: fit-content;
   height: 4rem;
@@ -217,6 +223,10 @@
 @keyframes faded {
   to {
     opacity: 1; } }
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg); } }
 
 .container-login {
   width: 100%;
@@ -661,7 +671,7 @@ body {
     height: 4rem;
     font-size: 2.5rem;
     border-radius: .5rem;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     cursor: pointer; }
@@ -909,24 +919,33 @@ body {
 @media (max-width: 991px) {
   html {
     font-size: 55%; }
-  .top .navbar {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    background-color: red;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
-    .top .navbar.active {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      background-color: #fff; }
-    .top .navbar .line {
-      display: none; } }
+  .top {
+    height: 8rem !important;
+    padding: 2rem !important; }
+    .top .logo {
+      margin-right: 0.5rem; }
+    .top .navbar {
+      position: absolute !important;
+      top: 100%;
+      left: 0;
+      right: 0 !important;
+      flex-direction: column;
+      background-color: #9FE2BF !important;
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      align-items: flex-start !important;
+      padding: 5rem 2rem; }
+      .top .navbar a:hover {
+        letter-spacing: 1rem; }
+      .top .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        background-color: #fff; }
+      .top .navbar .line {
+        display: none; }
+    .top .control {
+      gap: .5rem !important; }
+      .top .control .btn-bars {
+        display: flex !important; } }
 
 @media (max-width: 450px) {
   html {
     font-size: 50%; } }
-
-@keyframes rotate {
-  to {
-    transform: rotate(360deg); } }

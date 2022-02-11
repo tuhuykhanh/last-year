@@ -22,7 +22,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
-
 //login
 router.get('/login',
 checklogout.requiresLogout
@@ -45,7 +44,6 @@ router.put('/profile/edit/:id',upload.single('avatar'),checklogout.requiresLogin
 //change password form 
 router.get('/profile/changepass' ,checklogout.requiresLogin, accountConstroller.changepass)
 router.post('/profile/changepass/:id',checklogout.requiresLogin, accountConstroller.changepasspost)
-
 
 
 //log out

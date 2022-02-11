@@ -27,8 +27,6 @@ barsbtn.onclick =()=>
     navbar.classList.toggle('active');
 }
 
-
-
 //line slide
 const navbtn  = document.querySelectorAll('.top .navbar a')
 const line = document.querySelector('.top .navbar .line')
@@ -80,21 +78,31 @@ lightBtn.onclick = () =>{
     
     document.querySelector('.top .control .interface .control .themeBtn.active').classList.remove('active')
     lightBtn.classList.add('active')
-    console.log('light')
+
+    document.body.setAttribute('class', '')
+    document.body.classList.add('light-mode');
+
+  
 
 }
 defaultBtn.onclick = () =>{
     
     document.querySelector('.top .control .interface .control .themeBtn.active').classList.remove('active')
     defaultBtn.classList.add('active')
-    console.log('default')
+
+    document.body.setAttribute('class', '')
+
 
 }
 darkBtn.onclick = () =>{
     
     document.querySelector('.top .control .interface .control .themeBtn.active').classList.remove('active')
+
+    document.body.setAttribute('class', '')
+    document.body.classList.add('dark-mode');
+
     darkBtn.classList.add('active')
-    console.log('dark')
+    
 }
 
 
