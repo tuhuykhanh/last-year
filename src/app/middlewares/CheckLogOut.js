@@ -23,10 +23,16 @@ class CheckLogOut {
         } 
         res.locals.lcisLogged =  req.session.isLogged
         res.locals.lcuser =  req.session.user
+        
+        // res.locals.lcisAdmin =  res.locals.lcuser.role === 'admin'
+
+       
+        
+        
         next(); 
     }
     
-    isAdmin(req, res, next){
+    authAdmin(req, res, next){
         if(res.locals.lcuser.role === 'admin'){
             next()
         }else{

@@ -19,18 +19,18 @@
             </form>
         </div>
     </div>
-    
+
     <div class="control">
         <div class="btn-bars">
-             <i class="fas fa-bars"></i>
+            <i class="fas fa-bars"></i>
         </div>
         <div class="search-btn btn">
             <i class="fas fa-search">
             </i>
         </div>
-       
+
         <div class="interface btn">
-          
+
             <div class="fas fa-sliders-h"></div>
 
             <div class="control">
@@ -46,25 +46,36 @@
             </div>
         </div>
 
-       {{#if lcisLogged}}
+        {{#if lcisLogged}}
         <div class="info-user">
             <div class="image">
-                <img src="/{{lcuser.avatar}}"
-                    alt="image">
+                <img src="/{{lcuser.avatar}}" alt="image">
             </div>
             <div class="info-user-control">
-                <a class="user" href="/account/profile"> <i class="fas fa-user-alt"></i>my profile</a>
+
+                <div class="user">
+                    <a  href="/account/profile"> <i class="fas fa-user-alt"></i>my profile</a>
+                </div>
+              
+                <div class="adminpage">
+                    <a href="/admin">Admin page</a>
+                </div>
+                
+
+                
 
                 <div class="signOut">
                     <a href="/account/logout"><i class="fas fa-sign-out-alt"></i> log out</a>
                 </div>
+
+
             </div>
             <div class="name">
                 <h3>{{lcuser.username}}</h3>
             </div>
         </div>
-      {{else}}
-         <div class="handle-logInOut">
+        {{else}}
+        <div class="handle-logInOut">
             <div class="signin btn">
                 <a href="/account/login">sign in</a>
             </div>
@@ -72,7 +83,7 @@
                 <a href="/account/register">register</a>
             </div>
         </div>
-     {{/if}}
+        {{/if}}
     </div>
 
 </div>

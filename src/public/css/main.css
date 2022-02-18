@@ -282,7 +282,8 @@
       padding: 1rem;
       margin-bottom: .5rem;
       border-radius: .5rem;
-      background-color: #CCD1D1; }
+      background-color: #CCD1D1;
+      box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2); }
       .container-login .login-form .form input:hover {
         border: 2px solid black;
         background-color: #fff; }
@@ -360,7 +361,8 @@
       padding: 1rem;
       margin-bottom: 1rem;
       border-radius: .5rem;
-      background-color: #CCD1D1; }
+      background-color: #CCD1D1;
+      box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2); }
       .container-register .register-form .form input:hover {
         border: 2px solid black;
         background-color: #fff; }
@@ -782,8 +784,9 @@ body {
       .header .top .control .info-user .info-user-control {
         position: absolute;
         width: 100%;
+        height: 15rem;
         background-color: #A3E4D7;
-        bottom: -12.5rem;
+        bottom: -16rem;
         min-height: 12rem;
         border-radius: .5rem;
         padding: 1rem;
@@ -806,10 +809,28 @@ body {
           justify-content: center;
           align-items: center;
           gap: .5rem;
-          color: black;
-          font-weight: 500;
-          border: 2px solid black; }
+          border: 2px solid black;
+          margin-bottom: 1rem; }
+          .header .top .control .info-user .info-user-control .user a {
+            color: black;
+            font-weight: 500; }
           .header .top .control .info-user .info-user-control .user:hover {
+            background-image: linear-gradient(to right, #B24592, #F15F79);
+            color: #fff; }
+        .header .top .control .info-user .info-user-control .adminpage {
+          width: 14rem;
+          height: 4rem;
+          background-color: #fff;
+          border-radius: inherit;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: .5rem;
+          border: 2px solid black; }
+          .header .top .control .info-user .info-user-control .adminpage a {
+            color: black;
+            font-weight: 500; }
+          .header .top .control .info-user .info-user-control .adminpage:hover {
             background-image: linear-gradient(to right, #B24592, #F15F79);
             color: #fff; }
         .header .top .control .info-user .info-user-control a {

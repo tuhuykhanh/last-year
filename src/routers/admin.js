@@ -4,8 +4,7 @@ const router = express.Router();
 
 const checklogout = require('../app/middlewares/CheckLogOut')
 
-
-router.get('/',checklogout.isAdmin, (req,res,next) =>{
+router.get('/',checklogout.authAdmin, (req,res,next) =>{
     res.send('admin page')
 })
 

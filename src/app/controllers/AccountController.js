@@ -114,9 +114,7 @@ class AccountController {
                         })
                         .then(res.redirect('/account/profile'))
                         .catch(next)
-  
-                    })
-                    
+                    })        
                 }
                 else
                 {
@@ -145,10 +143,10 @@ class AccountController {
                 if(result === true){
                     
                     req.session.isLogged = true;
+                    
                     req.session.user = user
                     
-                  
-                   
+                     
                     const url = req.query.reURL || '/account/profile'
                     res.redirect(url)
 
