@@ -54,15 +54,15 @@
             <div class="info-user-control">
 
                 <div class="user">
-                    <a  href="/account/profile"> <i class="fas fa-user-alt"></i>my profile</a>
+                    <a href="/account/profile"> <i class="fas fa-user-alt"></i>my profile</a>
                 </div>
-              
-                <div class="adminpage">
-                    <a href="/admin">Admin page</a>
-                </div>
-                
 
-                
+
+                {{#if lcisAdmin}}
+                    <div class="adminpage">
+                        <a href="/admin">Admin page</a>
+                    </div>
+                {{/if}}
 
                 <div class="signOut">
                     <a href="/account/logout"><i class="fas fa-sign-out-alt"></i> log out</a>

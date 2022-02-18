@@ -143,9 +143,14 @@ class AccountController {
                 if(result === true){
                     
                     req.session.isLogged = true;
-                    
                     req.session.user = user
-                    
+
+                    if(req.session.user.role === 'admin')
+                    {
+                    req.session.isAdmin = true
+                    }
+
+                   
                      
                     const url = req.query.reURL || '/account/profile'
                     res.redirect(url)
@@ -162,16 +167,13 @@ class AccountController {
     //register user
     store(req, res, next) {
         User.findOne({ email: req.body.email }, (err, user) => {
-            if (user == null) { //Kiểm tra xem email đã được sử dụng chưa
-                bcrypt.hash(req.body.password, 10, function (err, hash) { //Mã hóa mật khẩu trước khi lưu vào db
+            if (user == null) { 
+                bcrypt.hash(req.body.password, 10, function (err, hash) { 
                     if (err) { return next(err); }
                     const user = new User(req.body)
-                    user.role = 'customer' //sau khi register thì role auto là customer
+
                     user.password = hash;
-                    user.password_confirm = hash;
-                    //default avatar
-                    user.avatar = 'uploads/avatar-1644396883170-37070774.jpg';
-                    user.address = 'none'
+                  
                     user.save()
                         .then( ()=> {
                             res.redirect('/account/login')

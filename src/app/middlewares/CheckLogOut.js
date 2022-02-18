@@ -21,14 +21,12 @@ class CheckLogOut {
         {
             req.session.isLogged = false;
         } 
+        
         res.locals.lcisLogged =  req.session.isLogged
-        res.locals.lcuser =  req.session.user
+        res.locals.lcuser =  req.session.user  
+        res.locals.lcisAdmin =  req.session.isAdmin
         
-        // res.locals.lcisAdmin =  res.locals.lcuser.role === 'admin'
 
-       
-        
-        
         next(); 
     }
     

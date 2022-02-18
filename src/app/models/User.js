@@ -12,20 +12,18 @@ const UserSchema = new Schema({
          required: true, 
          trim: true},
     role: {type: String, 
-        enum: ['admin', 'customer']},
+        default: 'customer'},
     password: {type: String, 
         required: true, 
         trim: true, 
         minlength: 6},
-    password_confirm: {type: String, 
-            required: true,
-            trim: true, 
-            minlength: 6},
     avatar: {type: String,
-        trim: true},
+        trim: true,
+    default: 'uploads/avatar-1644396883170-37070774.jpg'},
     address:{
-            type: String,
-            trim: true,
+        type: String,
+        trim: true,
+        default: 'none',
     }
 },{
     timestamps: true
