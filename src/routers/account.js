@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router();
 const accountConstroller = require('../app/controllers/AccountController')
 
-
 const checklogout = require('../app/middlewares/CheckLogOut')
 
 const path = require('path');

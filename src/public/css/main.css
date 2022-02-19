@@ -757,6 +757,7 @@ body {
       align-items: center;
       gap: 1rem;
       width: 16rem;
+      height: fit-content;
       position: relative;
       cursor: pointer; }
       .header .top .control .info-user .image {
@@ -793,6 +794,14 @@ body {
         font-size: 1.5rem;
         display: none;
         z-index: 10; }
+        .header .top .control .info-user .info-user-control::after {
+          content: '';
+          position: absolute;
+          top: -6px;
+          right: 10px;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-bottom: 6px solid #A3E4D7; }
         .header .top .control .info-user .info-user-control:before {
           content: '';
           position: absolute;

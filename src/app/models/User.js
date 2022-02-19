@@ -24,9 +24,14 @@ const UserSchema = new Schema({
         type: String,
         trim: true,
         default: 'none',
+    },
+    status: {
+        type: String,
+        trim: true,
+        default: 'normal'
     }
 },{
-    timestamps: true
+    timestamps: { currentTime: () => Math.floor(Date.now() / 1000) }
 })
 
 module.exports = mongoose.model('users', UserSchema)

@@ -327,12 +327,11 @@ function Validator(options) {
 
 }
 
-
 Validator.isRequired = function (selector, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value ? undefined :  message || 'Vui lòng nhập trường này'
+            return value ? undefined :  message || 'please enter this field'
         }
     };
 }
@@ -342,7 +341,7 @@ Validator.isEmail = function (selector, message) {
         selector: selector,
         test: function (value) {
             var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            return regex.test(value) ? undefined :  message || 'Trường này phải là email';
+            return regex.test(value) ? undefined :  message || 'this field must be email';
         }
     };
 }
@@ -351,7 +350,7 @@ Validator.minLength = function (selector, min, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value.length >= min ? undefined :  message || `Vui lòng nhập tối thiểu ${min} kí tự`;
+            return value.length >= min ? undefined :  message || `Please enter at least ${min} characters`;
         }
     };
 }
@@ -360,7 +359,7 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value === getConfirmValue() ? undefined : message || 'Giá trị nhập vào không chính xác';
+            return value === getConfirmValue() ? undefined : message || 'password confirm incorrectly';
         }
     }
 }
