@@ -34,7 +34,7 @@ class CheckLogOut {
         if(res.locals.lcuser.role === 'admin'){
             next()
         }else{
-            res.send('not admin')
+            res.redirect('/')
         }
     }
 

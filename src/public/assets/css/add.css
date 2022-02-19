@@ -33,3 +33,28 @@ section
     height: 100%;
     object-fit: cover;
 }
+
+.edit-btn
+{
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    color: rgba(0, 0, 0, .6) !important;
+}
+.edit-btn:hover
+{
+    background-color: #D5BF86;
+    color: #fff !important;
+}
+.delete-btn
+{
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    color: rgba(0, 0, 0, .6) !important;
+}
+.delete-btn:hover
+{
+    background-color: #A71D31;
+    color: #fff !important;
+}
+
+            

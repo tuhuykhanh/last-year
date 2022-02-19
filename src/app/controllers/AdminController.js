@@ -52,7 +52,15 @@ const AdminController = {
     userEditSm: async (req, res, next) => {
         try {
 
-            const { role , status} = req.body
+            const user = await User.findOne({ _id: req.params.id})
+
+            let { role , status} = req.body  
+            
+            if(role === '')
+                role = user.role
+            if(status === '')
+                status = user.status
+
             await User.updateOne({ _id: req.params.id },{
                 role: role,
                 status: status
