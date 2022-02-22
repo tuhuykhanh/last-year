@@ -1,0 +1,43 @@
+<section class="section">
+    <div class="container-postdetail">
+        <div class="post-header">
+            <div class="date-create">
+                <span class="left">category</span>
+
+                <span class="right">Thứ ba, 22/2/2022, 09:57 (GMT+7)</span>
+            </div>
+            <h2 class="title">
+               {{post.title}}
+            </h2>
+        </div>
+        <div class="post-body">
+            <div class="description">
+                <p>{{post.description}}</p>
+            </div>
+            <div class="container-image">
+                <div class="image">
+                    <img src="/{{post.thumbnail}}"
+                        alt="thumbnail">
+                </div>
+            </div>
+
+            <div class="content">
+                {{{ post.content }}}
+            </div>
+            
+            <div class="contentreal">
+
+            </div>
+
+            <div class="author">
+                <h3 class="name">{{post.user.username}}</h3>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script>
+       
+     
+
+</script>

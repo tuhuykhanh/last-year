@@ -1,20 +1,32 @@
-const Post = require('../models/Post')
+const PostModel = require('../models/Post')
 const Author = require('../models/Author')
+var fs = require('fs');
 
+const { mutipleMongooseToObject } = require('../../util/handleBlockHbs')
+const { mongooseToObject } = require('../../util/handleBlockHbs')
 
-class HomeController
-{
-    index(req,res,next){
+const path = require('path');
 
-        Post.find({})
-        .populate('list_author.author')
-        .then( data =>{   
+const HomeController = {
+
+    index: async (req, res, next) => {
+        try {
             
-           res.render('home')   
-           
-        })
-        .catch(err=> console.log(err))
-    }
+            const post = await PostModel.find({})
+            .populate('user')
+            await res.render('home',{
+                posts: mutipleMongooseToObject(post)
+            })
+
+        } catch (error) {
+            return res.status(500).json({ msg: error.message })
+        }
+    },
+
+
+
+
+
 }
 
-module.exports = new HomeController;
+module.exports = HomeController;

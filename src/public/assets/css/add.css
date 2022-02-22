@@ -38,23 +38,98 @@ section
 {
     padding: .5rem 1rem;
     border-radius: .5rem;
-    color: rgba(0, 0, 0, .6) !important;
+    color:white;
+    background-color: #D5BF86;
+    font-size: .8rem;
 }
 .edit-btn:hover
 {
-    background-color: #D5BF86;
-    color: #fff !important;
+    padding: .3rem 1rem;
+    color: black;
 }
 .delete-btn
 {
     padding: .5rem 1rem;
     border-radius: .5rem;
-    color: rgba(0, 0, 0, .6) !important;
+    color: #fff ;
+    background-color: #A71D31;
+    font-size: .8rem;
 }
 .delete-btn:hover
 {
-    background-color: #A71D31;
-    color: #fff !important;
+    padding: .3rem 1rem;
+    color: black;
 }
 
-            
+.container-form-confirm-delete
+{
+   
+    width: 100%;
+    /* height: 100vh; */
+    display: flex;
+    justify-content: center;
+
+}
+.container-form-confirm-delete .box
+{
+    width: 25rem;
+    height: fit-content;
+    background-color: #D5BF86;
+    padding: 1rem;
+    border-radius: 1rem;
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index:10000;
+
+}
+
+.container-form-confirm-delete .box .title
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.container-form-confirm-delete .box .title h3{
+    color: #A71D31;
+
+}
+.container-form-confirm-delete .box .title .fa-times
+{
+   font-size: 1.5rem;
+   cursor: pointer;
+   color: #3F0D12;
+}
+.container-form-confirm-delete .box .content
+{
+    margin-bottom: 1rem;
+}
+.container-form-confirm-delete .box .button
+{
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+}
+.container-form-confirm-delete .box .button .btn-form
+{
+    height: 2rem;
+    width: 4rem;    
+    border-radius: .5rem; 
+}
+.yes
+{
+    background-color: #A71D31;
+    color: #fff;
+}
+.z-index
+{
+    z-index: 10000;
+}
+
+/*///////// create post  //////*/
+.container-createpost
+{
+
+}

@@ -1,0 +1,196 @@
+
+.section-title
+{   
+    position: relative;
+    margin-bottom: 3rem;
+
+    &::before
+    {
+        content: '';
+        position: absolute;
+        top: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 8rem;
+        height: .5rem;
+        background-color: #91171F;
+
+    }
+    
+    h2{
+        color:#91171F;
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 500;
+    }
+}
+.container-recent-post
+{   
+   
+    display: flex;
+    gap: 2rem;
+    flex-wrap:wrap;
+    align-items: flex-start;
+    justify-content: center;
+    
+    .post-box
+    {
+        width: 35rem;
+        height: 37rem;
+        padding: 1rem;
+        background-color: #CD5D67;
+        border-radius: .5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        .post-image
+        {
+            width: 33rem;   
+            border-radius: .5rem;
+            overflow: hidden;
+            height: 20rem;
+            flex-shrink: 0;
+            margin-bottom: .5rem;
+
+                img
+                {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+        }
+       
+        .postster
+        {
+            width: 100%;
+            font-size: 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            height: 4rem;
+            flex-shrink: 0;
+
+            .postster-name
+            {
+                text-align: center;
+                width: 7rem;
+                background-color: #333;
+                border-radius: .5rem;
+                color: #fff;
+                font-weight: 400;
+            }
+            .date-create
+            {     
+                text-align: center;
+                width: fit-content;
+                padding: 0  .5rem;
+                background-color: #582707;
+                border-radius: .5rem;
+                color: #fff;
+                font-weight: 400;
+                white-space: nowrap;
+            }
+            
+        }
+        .post-title
+        {
+            overflow: hidden;
+            text-overflow: ellipsis ellipsis;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            a{
+                
+                display: block;
+                font-size: 2rem;
+                color: white;
+            }
+        }  
+    }
+}
+////////post detail page ////////
+.container-postdetail
+{
+    padding: 2rem 20rem 0;
+    img
+    {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+    }
+    p
+    {
+        text-rendering: optimizeSpeed;
+        word-spacing: .2rem;
+        margin-bottom: 0.5rem;
+    }
+    .post-header
+    {
+        .date-create
+        {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: rgba(0,0,0,.7)
+        }
+        .title
+        {
+            font-size: 3.2rem;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: 1rem;
+        }
+    }
+    .post-body
+    {
+        .description
+        {
+            
+            margin-bottom: 1.5rem;
+            p{
+                font-size: 1.8rem;
+                line-height: 160%;
+                font-weight: 400;
+            }
+        }
+        .container-image
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        
+            text-align: center;
+            .image
+            {
+                width: 100%;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        .content
+        {
+            p{
+                font-size: 1.8rem;
+                line-height: 160%;
+                font-weight: 400;
+            }
+            margin-bottom: 1rem;
+        }
+        .author
+        {
+            float: right;
+        }
+    }
+}
+

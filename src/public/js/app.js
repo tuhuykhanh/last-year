@@ -10,7 +10,7 @@ window.addEventListener('scroll', function(){
         header.style.top = "-10rem";
     }else
     {   
-        header.style.top = '0'; 
+        header.style.top = '1rem'; 
     }
     lastscrolltop = scrolltop
 })
@@ -367,11 +367,19 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 
 ///load animation 
 
-const loadbox = document.getElementById('load')
+// const loadbox = document.getElementById('load')
+// window.onload =()=>{
+//     loadbox.style.display =  'none' ;
+// }
 
-
-window.onload =()=>{
-    loadbox.style.display =  'none' ;
-}
-
-
+/////slick///
+// $(document).ready(function(){
+//     $('.container-home .home-page .background-header-slider .container-bg-im').slick({
+//         infinite: true,
+//         slidesToShow: 1,
+//         slidesToScroll: 1,
+//         autoplay: true,
+//         autoplaySpeed: 3000,
+//         arrows: false
+//     });
+//   });

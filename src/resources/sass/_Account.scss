@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     background-color: #D6EAF8;
+    padding-top: 8rem;
     
     .login-form
     {
@@ -18,6 +19,7 @@
         border-radius: 1rem;
         border: 3px solid #fff;
         margin: 5rem 0;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 
 
         .content-top
@@ -153,8 +155,6 @@
     }
 }
 
-
-
 //register
 
 .container-register
@@ -165,6 +165,7 @@
     justify-content: center;
     align-items: center;
     background-color: #D6EAF8;
+    padding-top: 8rem;
 
     .register-form
     {
@@ -174,6 +175,7 @@
         border-radius: 1rem;
         border: 3px solid #fff;
         margin: 5rem 0;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
         .content-top{
 
             text-align:center;
@@ -261,6 +263,8 @@
     border-radius: 1rem;
     min-height: 35rem;
     z-index: 1;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    border: 2px solid #fff;
 
     .container-info-left
     {
@@ -365,8 +369,7 @@
 //profile edit
 
 
-
-
+    
 .container-profile-normal
 {
     display: flex;
@@ -376,6 +379,8 @@
     border-radius: 1rem;
     min-height: 35rem;
     z-index: 1;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    border: 2px solid #fff;
 
     .container-info-left-normal
     {
@@ -441,7 +446,6 @@
 
     .info-right-normal
     {
-
         flex: 1 1 30rem;
         padding: 2rem;
         opacity: 0;

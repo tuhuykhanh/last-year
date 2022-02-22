@@ -223,8 +223,6 @@
   }
 
 
-
-
 @keyframes slideFromTop {
     from
     {
@@ -290,3 +288,17 @@
   }
 }
 
+
+@keyframes jumptop {
+  from
+  {
+    transform: translateY(0);
+    opacity: 0;
+
+  }
+  to
+  {
+    transform: translateY(-5rem);
+    opacity: 1;
+  }
+}

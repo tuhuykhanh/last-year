@@ -1,18 +1,89 @@
-<div id="toast"></div>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
-<h1>khanh</h1>
+<div class="container-home">
+    <div class="home-page">
+
+        {{!-- background-top --}}
+        <div class="background-header-slider">
+
+            <div class="container-bg-im">
+                <div class="background-image">
+                </div>
+                {{!-- <div class="background-image">
+                </div>
+                <div class="background-image">
+                </div>
+                <div class="background-image">
+                </div> --}}
+            </div>
+            <div class="container-box">
+
+                <div class="box-item">
+                    <div class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Our staff</h3>
+                        <a href="">view more</a>
+                    </div>
+                </div>
+                <div class="box-item">
+                    <div class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Our staff</h3>
+                        <a href="">view more</a>
+                    </div>
+                </div>
+                <div class="box-item">
+                    <div class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Our staff</h3>
+                        <a href="">view more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+            {{!-- recent post  --}}
+
+        <section class="section">
+                       <div class="section-title">
+                            <h2>Recent Posts</h2>
+                       </div>
+            <div class="container-recent-post">
+                {{#each posts}}
+                    <div class="post-box">
+                        <div class="post-image">
+                           <a href="/post/{{this.slug}}">
+                                <img src="{{this.thumbnail}}" alt="">
+                           </a>
+                        </div> 
+
+                        
+                        <div class="postster">
+                            <h3 class="postster-name">
+                                {{this.user.username}}
+                            </h3>
+
+                            <span class="date-create">
+                                    Create At: 2/21/2022
+                            </span>
+                        
+                        </div>
+                        <div class="post-title">
+                            <a href="/post/{{this.slug}}">{{this.title}}</a>
+                        </div>
+                    </div>
+                {{/each}}
+                   
+                    
+ 
+            </div>
+
+        </section>
+    </div>
+</div>
+

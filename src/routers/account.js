@@ -1,14 +1,11 @@
 const express = require('express')
 const router = express.Router();
 const accountConstroller = require('../app/controllers/AccountController')
-
 const checklogout = require('../app/middlewares/CheckLogOut')
 
 const path = require('path');
-
 //midleware uploads file
 const multer  = require('multer')
-// const upload = multer({ dest: path.resolve(__dirname, '../public/uploads') })
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.resolve(__dirname, '../public/uploads'))

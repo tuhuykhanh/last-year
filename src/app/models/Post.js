@@ -1,34 +1,40 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
+const slug = require('mongoose-slug-generator');
 
-const PostSchema  = new Schema({
+const PostSchema = new Schema({
+    user: { type: mongoose.Types.ObjectId, ref: 'users' },
     title: {
         type: String,
         require: true,
+        trim: true,
+        minLength: 10,
+        maxLength: 100
+    },
+    content: {
+        type: String,
+        require: true,
+        minLength: 100
     },
     description: {
         type: String,
+        require: true,
+        trim: true,
+        minLength: 50,
+       
     },
-    url: {
+    thumbnail:{
         type: String,
+        require: true
     },
-    status: {
-        type:String,
-        enum: ['TO LEARN',' LEARNING', 'LEARNED']
-    },
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    },
-    list_author: {  
-       author:{
-           type: String,
-           ref: 'authors'
-       }
-    }
-   
-},{
+    slug: { 
+        type: String, 
+        slug: 'title',
+        unique:true }
+    
+}, {
     timestamps: true,
 })
+mongoose.plugin(slug)
 
-module.exports = mongoose.model('news',PostSchema)
+module.exports = mongoose.model('posts', PostSchema)

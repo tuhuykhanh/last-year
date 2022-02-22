@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-
+const fs = require('fs')
 
 //midleware
 const checkAuthen = require('./app/middlewares/CheckLogOut')
@@ -37,15 +37,12 @@ app.use(session({
   }));
 app.use(checkAuthen.checkLocalAuthen);
 
-
-
 app.engine('.hbs',engine({
     defaultLayout: 'main',
     extname:'.hbs'
 }))
 app.set('view engine','.hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
 
 
 route(app);

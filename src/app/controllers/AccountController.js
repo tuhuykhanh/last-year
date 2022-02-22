@@ -31,7 +31,6 @@ const AccountController = {
                         .then(() => {
                             //update session
                             //set name
-
                             req.session.user.username = req.body.username
                             res.locals.lcuser.username = req.session.user.username
 
@@ -171,7 +170,6 @@ const AccountController = {
             return res.status(500).json({ msg: err.message })
         }
     },
-
 }
 
 module.exports = AccountController;
