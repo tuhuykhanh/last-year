@@ -4,7 +4,7 @@
             <div class="date-create">
                 <span class="left">category</span>
 
-                <span class="right">Thứ ba, 22/2/2022, 09:57 (GMT+7)</span>
+                <span class="right">{{post.createdAt}}</span>
             </div>
             <h2 class="title">
                {{post.title}}
@@ -30,7 +30,7 @@
             </div>
 
             <div class="author">
-                <h3 class="name">{{post.user.username}}</h3>
+                <h3 class="name">By: {{post.user.username}}</h3>
             </div>
 
         </div>

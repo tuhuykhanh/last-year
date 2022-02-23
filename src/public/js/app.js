@@ -45,15 +45,13 @@ const formSearch = document.querySelector('.top .search-form')
 const closeBtnSearch = document.querySelector('.top .search-form .container-form .fa-times')
 const inputSearch = document.querySelector('.top .search-form .container-form form input')
 
-
 ///test
-
-searchBtn.onclick = () =>
-{
-    formSearch.classList.add('active');
-    searchBtn.classList.add('active');
-    inputSearch.focus();
-}
+// searchBtn.onclick = () =>
+// {
+//     formSearch.classList.add('active');
+//     searchBtn.classList.add('active');
+//     inputSearch.focus();
+// }
 closeBtnSearch.onclick = ()=>
 {
     formSearch.classList.remove('active')

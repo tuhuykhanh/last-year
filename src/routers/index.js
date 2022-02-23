@@ -5,6 +5,7 @@ const postRouter = require('./post')
 
 function route(app) {
     
+    app.use('/getvalue',postRouter)
     app.use('/account',acountRouter)
     app.use('/admin',adminRouter)     
     app.use('/post',postRouter)     

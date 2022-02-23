@@ -128,8 +128,69 @@ section
     z-index: 10000;
 }
 
+
+
+
+
+
+
+
 /*///////// create post  //////*/
 .container-createpost
 {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 
+}
+.container-createpost input,textarea,h3
+{
+    color: black;
+}  
+.container-createpost h4
+{
+    width: 10rem;
+    height: 3rem;
+    text-align: center;
+    background-color: #19323C;
+    line-height: 2;
+    border-radius: .5rem;
+    color: #FCF6B1;
+    margin: 0 auto;
+} 
+
+.container-createpost .form-input .form .box
+{
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  
+}
+.container-createpost .form-input .form .box label
+{
+    font-size: 1.2rem;
+    color: #3D3B3C;
+}
+.container-createpost .form-input .form .box input,textarea
+{
+    font-size: 1.2rem;
+}
+.container-createpost .form-input .form .box .left
+{
+    flex: 1 1 20rem;
+    background-color: #FCF6B1;
+    padding: .8rem 1rem;
+    border-radius: 1rem;
+}
+.container-createpost .form-input .form .box .left .form-group
+{
+    display: flex;
+    flex-direction: column;
+}
+.container-createpost .form-input .form .box .right
+{
+    padding: .8rem 1rem;
+    flex: 1 1 20rem;
+    background-color:#88BB92;
+    border-radius: 1rem;
 }

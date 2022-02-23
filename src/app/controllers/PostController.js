@@ -14,7 +14,21 @@ const PostController = {
         await res.render('post/postDetail',{
             post: mongooseToObject(post)
         })
-    } 
+    },
+    getvalue: async (req, res, next) => {
+        try {
+
+            let payload = req.body.payload.trim();
+            let result = await PostModel.find({title: {$regex: new RegExp('^'+payload+'.*')}}).exec();
+            result = result.slice(0,10);
+            res.send({payload: result})
+
+        } catch (error) {
+
+            return res.status(500).json({ msg: error.message })
+
+        }
+    }
 
 }
 

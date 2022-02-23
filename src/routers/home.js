@@ -21,6 +21,9 @@ const upload = multer({ storage: storage })
 // router.post('/upload',upload.array('flFileUpload', 12),homeController.upload)
 // router.get('/files',homeController.fileUpload)
 
+
+//search
+router.get('/search',homeController.searchPage)
 router.get('/',homeController.index)
 
 module.exports =  router;

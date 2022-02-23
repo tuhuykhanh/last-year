@@ -11,10 +11,10 @@ const HomeController = {
 
     index: async (req, res, next) => {
         try {
-            
+
             const post = await PostModel.find({})
-            .populate('user')
-            await res.render('home',{
+                .populate('user')
+            await res.render('home', {
                 posts: mutipleMongooseToObject(post)
             })
 
@@ -22,6 +22,17 @@ const HomeController = {
             return res.status(500).json({ msg: error.message })
         }
     },
+    searchPage: async (req, res, next) => {
+
+        try {
+            res.render('search/searchPage')
+
+        } catch (error) {
+            return res.status(500).json({ msg: error.message })
+
+        }
+    },
+    
 
 
 

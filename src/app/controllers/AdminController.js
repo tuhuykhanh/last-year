@@ -45,9 +45,7 @@ const AdminController = {
         try {
 
             const user = await User.findOne({ _id: req.params.id})
-
             let { role , status} = req.body  
-            
             if(role === '')
                 role = user.role
             if(status === '')
@@ -132,6 +130,53 @@ const AdminController = {
             
         } catch (error) {
             return res.status(500).json({ msg: error.message })    
+        }
+    }, 
+    ///// get form edit////
+    postEdit: async(req , res,next) =>{
+        try {   
+            const post =await PostsModel.findOne({_id: req.params.id})
+            if(!post) 
+                return res.json('not found')
+            await res.render('admin/adminEditPost',{
+                post:  mongooseToObject(post),
+                layout: 'admin'
+            })
+            
+        } catch (error) {
+            return res.status(500).json({ msg: error.message })    
+        }
+
+    },
+    postEditSm: async( req , res, next) =>{
+        try {
+        const post = await PostsModel.findOne({_id: req.params.id})
+        let {title , description , content} = req.body
+        if(title === '')
+            title = post.title
+        if(description === '')
+            description = post.title
+        if(content === '')
+            content = post.content
+        if(req.file)
+        {
+            var thumbnail = req.file.path.split('\\').slice(5,8).join('/')  
+        }else
+        {
+           var thumbnail = post.thumbnail         
+        }
+
+        await PostsModel.updateOne({_id: req.params.id},{
+                title,
+                description,
+                content,
+                thumbnail
+        })
+
+        res.redirect('/admin/posts')
+        
+        } catch (error) {
+            return res.status(500).json({ msg: error.message }) 
         }
     }
 

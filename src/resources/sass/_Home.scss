@@ -38,7 +38,7 @@
         width: 35rem;
         height: 37rem;
         padding: 1rem;
-        background-color: #CD5D67;
+        background-color: #57737A;
         border-radius: .5rem;
         display: flex;
         flex-direction: column;
@@ -61,7 +61,6 @@
                     object-fit: cover;
                 }
         }
-       
         .postster
         {
             width: 100%;
@@ -165,11 +164,11 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 1rem;
-        
             text-align: center;
             .image
             {
                 width: 100%;
+                max-height: 55rem;
                 overflow: hidden;
                 img{
                     width: 100%;
@@ -194,3 +193,105 @@
     }
 }
 
+//////footer //// 
+
+.container-footer
+{
+    margin-top: 10rem;
+    display: flex;
+    width: 100%;
+    height: 45rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    .container-map
+    {
+        width: 60rem;
+        height: 45rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        flex: 1 1 25rem;
+    }
+    .container-content
+    {
+        flex: 1 1 25rem;
+        background-color: rgba(0,0,0,.9);
+        color:white;
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        height: 100%;
+        .title
+        {
+            font-size: 2rem;
+            
+            h3{
+                padding: 1rem 2rem;
+                background-color: #B3C5D7;
+                margin-bottom: 1rem;
+            }
+
+        }
+        .info
+        {
+            p{
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            span
+            {
+                font-size: 1.5rem;
+                color: #955E42;
+                padding: 2rem;
+                margin-bottom: 1rem;
+               
+            }
+        }
+        .social-icon
+        {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            .icon{
+                font-size: 3rem;
+                width: 5rem;
+                height: 5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: .5rem;
+                      
+            }
+            .facebook
+            {
+                &:hover
+                {
+                    background-color: #fff;
+                    font-size: 4rem;
+                    color: #0572E6;
+                }
+            }
+            .youtube
+            {
+                &:hover
+                {
+                    background-color: #fff;
+                    font-size: 4rem;
+                    color: #FF0101
+
+                }
+            }
+            .instagram
+            {
+                &:hover
+                {
+                    background-color: #fff;
+                    font-size: 4rem;
+                    color: #F76229
+                }
+            }
+        }
+    }
+}

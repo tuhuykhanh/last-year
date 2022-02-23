@@ -20,7 +20,12 @@ const upload = multer({ storage: storage })
 
 
 router.delete('/post/delete:id',checklogout.authAdmin, adminConstroller.postDelete)
+
 router.delete('/user/delete:id',checklogout.authAdmin, adminConstroller.userDelete)
+
+router.put('/postedit:id',upload.single('thumbnail'),checklogout.authAdmin, adminConstroller.postEditSm)
+
+router.get('/postedit:id',checklogout.authAdmin, adminConstroller.postEdit)
 
 router.get('/edit:id',checklogout.authAdmin, adminConstroller.userEdit)
 //edit user
