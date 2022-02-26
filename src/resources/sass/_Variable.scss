@@ -2,18 +2,20 @@
 :root{
     --color: #17202A;
     --bgc: #DAF7A6;
-    
     --btnbg-regis: #979A9A;
     --btnbg-signin: #40E0D0;
-}
-
-.light-mode
-{
-     --bgc: #E5E7E9;
-}
-.dark-mode
-{
-   --bgc: #5D6D7E;
+    --bgbody: #AFD0D6;
+  }
+  
+  .light-mode
+  {
+    --bgc: #E5E7E9;
+    --bgbody: #FBFBFF;
+  }
+  .dark-mode
+  {
+    --bgbody: #89A1EF;
+    --bgc: #5D6D7E;
 }
 
 

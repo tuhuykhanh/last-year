@@ -19,14 +19,10 @@ const upload = multer({ storage: storage })
 
 
 //login
-router.get('/login',
-checklogout.requiresLogout
-,accountConstroller.login);
+router.get('/login',checklogout.requiresLogout,accountConstroller.login);
 
 
-router.post('/login',
-checklogout.requiresLogout,
-accountConstroller.loginsubmit);
+router.post('/login',checklogout.requiresLogout,accountConstroller.loginsubmit);
 
 //profile
 
@@ -46,14 +42,14 @@ router.get('/logout',
 checklogout.requiresLogin,
 accountConstroller.logout);
 
-
 //form register GET
-router.get('/register',
-checklogout.requiresLogout,
-accountConstroller.register);
+router.get('/register',checklogout.requiresLogout,accountConstroller.register);
 
 //form register POST
+router.get('/activate/:token', accountConstroller.activeMail);
 router.post('/store', accountConstroller.store);
+
+
 
 router.get('/password_resets',accountConstroller.resetpassword);
 

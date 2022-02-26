@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const { reset } = require('nodemon');
 const {engine} = require("express-handlebars");
@@ -7,6 +8,7 @@ const port = 3000;
 const route = require('./routers/index')
 const db = require('./config/db/index')
 const methodOverride = require('method-override');
+const cors = require('cors')
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -36,6 +38,7 @@ app.use(session({
     )
   }));
 app.use(checkAuthen.checkLocalAuthen);
+app.use(cors());
 
 app.engine('.hbs',engine({
     defaultLayout: 'main',
@@ -43,7 +46,6 @@ app.engine('.hbs',engine({
 }))
 app.set('view engine','.hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
 
 route(app);
 

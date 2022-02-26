@@ -26,7 +26,6 @@ class CheckLogOut {
         res.locals.lcuser =  req.session.user  
         res.locals.lcisAdmin =  req.session.isAdmin
         
-
         next(); 
     }
     

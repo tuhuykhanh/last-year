@@ -12,7 +12,9 @@ const HomeController = {
     index: async (req, res, next) => {
         try {
 
-            const post = await PostModel.find({})
+            const post = await PostModel.find({}).sort({
+                createdAt: -1
+            })
                 .populate('user')
             await res.render('home', {
                 posts: mutipleMongooseToObject(post)
@@ -33,11 +35,6 @@ const HomeController = {
         }
     },
     
-
-
-
-
-
 }
 
 module.exports = HomeController;

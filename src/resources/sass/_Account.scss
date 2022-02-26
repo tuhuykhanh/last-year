@@ -177,8 +177,12 @@
         margin: 5rem 0;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
         .content-top{
-
+            
             text-align:center;
+            .notification{
+                color: green;
+                font-size: 1.5rem;
+            }
            h2{
             font-size: 2.5rem;
             font-weight: normal ;
@@ -384,7 +388,7 @@
 
     .container-info-left-normal
     {
-        flex: 1 1 10rem;
+            flex: 1 1 10rem;
             text-align: center;
             padding: 2rem;
             position: relative;

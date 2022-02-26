@@ -2,6 +2,10 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const { mutipleMongooseToObject } = require('../../util/handleBlockHbs')
 const { mongooseToObject } = require('../../util/handleBlockHbs')
+const jwt = require('jsonwebtoken')
+const sendMail = require('../../config/sendMail')
+
+const {CLIENT_URL} = process.env
 
 const AccountController = {
     //form login
@@ -151,25 +155,71 @@ const AccountController = {
     //register user
     store: async (req, res, next) => {
         try {
-            const { username, email, password } = req.body
-
-            const user = await User.findOne({ email: email })
-            if (user) return res.render('account/register', {
-                err: 'email has been used',
+            const {username, email, password} = req.body
+            
+            const user = await User.findOne({email: email})
+            if(user) return  res.render('account/register',{
+                                err: 'email has been used',
             })
             const passwordHash = await bcrypt.hash(password, 12);
 
-            const newUser = new User({
+            const newUser = {
                 username, email, password: passwordHash
+            }
+
+            const activation_token = createActivationToken(newUser);
+
+            const url = `${CLIENT_URL}/account/activate/${activation_token}`;
+
+            sendMail(email, url, "Verify your email address");
+
+            res.render('account/register',{
+                notification: "Register Success! Please activate your email to login."
             })
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    activeMail: async(req,res,nex) =>{
+        try {
+           
+
+            const token = req.params.token
+
+            const user = jwt.verify(token, process.env.ACTIVATION_TOKEN_SECRET)
+
+            const {username , email , password} = user
+
+            const check = await User.findOne({email: email})
+
+            if(check) return res.status(400).json({msg:"This email already exists."})
+
+            const newUser = new User({
+                username, email, password
+            })
+
             await newUser.save();
 
             res.redirect('/account/login')
 
+
         } catch (err) {
-            return res.status(500).json({ msg: err.message })
+            return res.status(500).json({msg: err.message})  
         }
-    },
+    }
+}
+
+const createActivationToken = (payload) => {
+    return jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET, {expiresIn: '5m'})
+}
+
+const createAccessToken = (payload) => {
+    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15m'})
+}
+
+const createRefreshToken = (payload) => {
+    return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
 }
 
 module.exports = AccountController;

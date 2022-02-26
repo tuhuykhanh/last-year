@@ -27,23 +27,38 @@
                     <div class="right">
                         <div class="form-review">
                             <h4 class="title">Review</h4>
-                        </div>
 
+                            <div class="container-box-rv">
+                                <div class="image-rv">
+                                <img src="" alt="">
+                            </div>
+                            <div class="middle">
+                                <div class="by">
+                                    <span></span>
+                                </div>
+                                <div class="create-at">
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="title-rv">
+                                <p></p>
+                            </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <label for="content" class="form-label">Content</label>
                     <textarea name="content" id="content" cols="30" rows="10">
 
                     </textarea>
                     <span class="form-message"></span>
                 </div>
-                <button class="form-submit">Create Post</button>
+                <button class="form-submit save-btn">Create Post</button>
             </form>
         </div>
-
     </div>
 </section>
 
@@ -52,4 +67,26 @@
         "extraPlugins": 'imagebrowser',
         "imageBrowser_listUrl": "/files"
     });
+
+        const titleIp = document.querySelector('input[name="title"]')
+        const titleRv = document.querySelector('.title-rv p')
+        const datebox = document.querySelector('.create-at span')
+        const boxImgRv = document.querySelector('.image-rv img')
+        const byRv = document.querySelector('.by span')
+      
+
+        titleIp.oninput =(e)=> {
+
+            titleRv.textContent = titleIp.value
+
+            const date = new Date
+            const hour = `${date.getHours()}:${date.getMinutes()}`
+            const dateNow = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}, ${hour}`;
+            datebox.innerText = dateNow
+            boxImgRv.src = `/img/thumbnail-post/defaultimg.jpg`
+
+            byRv.innerText = 'Admin'
+
+        }
+
 </script>
