@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const PostsModel = require('../models/Post')
+const CategoryModel = require('../models/Category')
 
 const bcrypt = require('bcrypt')
 const { mutipleMongooseToObject } = require('../../util/handleBlockHbs')
@@ -97,21 +98,27 @@ const AdminController = {
     },
     formCreate: async (req, res, next) => {
 
-        res.render('admin/adminCreatePost', { layout: 'admin' })
+        const categorys = await CategoryModel.find({})
+
+        res.render('admin/adminCreatePost', { 
+            categorys: categorys ? mutipleMongooseToObject(categorys) : '',
+            layout: 'admin' })
     },
     createPost: async (req,res,next) => {
 
         try {
 
-            const { title, content, description, thumbnail } = req.body
-            
+            const { title, content, description, category } = req.body
+
             const newPost = new PostsModel({
 
                 user: res.locals.lcuser._id,
                 title: title.toLowerCase(), 
                 content,
                 description, 
-                thumbnail: req.file.path.split('\\').slice(5,8).join('/'), 
+                thumbnail: (req.file) ? req.file.path.split('\\').slice(5,8).join('/') : 'img/thumbnail-post/defaultimg.jpg',
+                category: category
+
             })
 
             await newPost.save()
@@ -136,10 +143,14 @@ const AdminController = {
     postEdit: async(req , res,next) =>{
         try {   
             const post =await PostsModel.findOne({_id: req.params.id})
+            .populate('category')
             if(!post) 
                 return res.json('not found')
+            const categorys = await CategoryModel.find({})
+
             await res.render('admin/adminEditPost',{
                 post:  mongooseToObject(post),
+                categorys: mutipleMongooseToObject(categorys),
                 layout: 'admin'
             })
             
@@ -151,13 +162,15 @@ const AdminController = {
     postEditSm: async( req , res, next) =>{
         try {
         const post = await PostsModel.findOne({_id: req.params.id})
-        let {title , description , content} = req.body
+        let {title , description , content, category} = req.body
         if(title === '')
             title = post.title
         if(description === '')
             description = post.title
         if(content === '')
             content = post.content
+        if(category === '')
+             category = post.category
         if(req.file)
         {
             var thumbnail = req.file.path.split('\\').slice(5,8).join('/')  
@@ -165,12 +178,12 @@ const AdminController = {
         {
            var thumbnail = post.thumbnail         
         }
-
         await PostsModel.updateOne({_id: req.params.id},{
                 title,
                 description,
                 content,
-                thumbnail
+                thumbnail,
+                category
         })
 
         res.redirect('/admin/posts')
@@ -178,9 +191,71 @@ const AdminController = {
         } catch (error) {
             return res.status(500).json({ msg: error.message }) 
         }
+    },
+    formCreateCt: async(req,res) => {
+        try {
+            await res.render('admin/adminCreateCate',{
+                layout: 'admin'
+            })
+            
+        } catch (error) {
+            return res.status(500).json({ msg: error.message })    
+        }
+    },
+    CreateCtSm: async  (req,res) =>{
+        try {
+
+            const { category } = req.body
+
+            const match =  await CategoryModel.findOne({name: category})
+            if(match)
+                return res.render('admin/adminCreateCate',{
+                    err: 'This category already exists',
+                    layout: 'admin'
+                })
+                
+            const newCategory = new CategoryModel({
+                name: category
+            })
+               
+            await newCategory.save();
+            res.redirect('/admin/categorys')
+            
+        } catch (error) {
+            return res.status(500).json({ msg: error.message })
+        }
+    },
+    getCategorys: async(req,res) => {
+        try {
+
+            const categorys = await CategoryModel.find({})
+            if(!categorys) 
+                return res.status(400).json({msg: 'not found'})
+            res.render('admin/adminCategorys',{
+                layout: 'admin',
+                categorys: mutipleMongooseToObject(categorys)
+            })
+            
+        } catch (error) {
+            return res.status(500).json({ msg: error.message })
+        }
+    },
+    deleteCategory: async (req,res) => {
+        try {
+    //   const blog = await PostsModel.findOne({category: req.params.id})
+    //   if(blog) 
+    //     return res.status(400).json({
+    //       msg: "Can not delete! In this category also exist blogs."
+    //     })
+      const category = await CategoryModel.findByIdAndDelete(req.params.id)
+      if(!category) 
+        return res.status(400).json({msg: "Category does not exists."})
+
+      res.redirect('/admin/categorys')
+    } catch (err) {
+      return res.status(500).json({ msg: err.message })
     }
-
-
+    }
 }
 
 

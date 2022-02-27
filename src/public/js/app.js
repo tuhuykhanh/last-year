@@ -2,9 +2,11 @@
 var lastscrolltop  = 0;
 var header = document.querySelector('.header .top')
 
+const scrollTopBtn = document.querySelector('.scrolltop')
+
 window.addEventListener('scroll', function(){
     let scrolltop = window.pageYOffset 
-
+    
     if(scrolltop > lastscrolltop)
     {
         header.style.top = "-10rem";
@@ -13,6 +15,17 @@ window.addEventListener('scroll', function(){
         header.style.top = '1rem'; 
     }
     lastscrolltop = scrolltop
+})
+
+window.addEventListener('scroll', function(){
+    let scrolltop = window.pageYOffset 
+    if(scrolltop> 1000){  
+        scrollTopBtn.classList.add('active')   
+    }else
+    {
+        scrollTopBtn.classList.remove('active')   
+    }
+   
 })
 
         
@@ -363,12 +376,8 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 }
 
 
-///load animation 
 
-// const loadbox = document.getElementById('load')
-// window.onload =()=>{
-//     loadbox.style.display =  'none' ;
-// }
+
 
 /////slick///
 // $(document).ready(function(){

@@ -298,6 +298,10 @@ section
     color: #fff;
     margin-top: 5px;
     text-align: left;
-   
-   
+}
+.error
+{
+    color: red;
+    font-size: 1.5rem;
+    
 }

@@ -21,7 +21,6 @@ const PostSchema = new Schema({
         require: true,
         trim: true,
         minLength: 50,
-       
     },
     thumbnail:{
         type: String,
@@ -30,8 +29,13 @@ const PostSchema = new Schema({
     slug: { 
         type: String, 
         slug: 'title',
-        unique:true }
-    
+        unique:true 
+    },
+    views: {
+        type: Number,
+        default: 0,
+    },
+    category: { type: mongoose.Types.ObjectId, ref: 'categorys'}
 }, {
     timestamps: true,
 })

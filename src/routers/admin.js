@@ -33,7 +33,16 @@ router.post('/edit:id',checklogout.authAdmin, adminConstroller.userEditSm)
 
 router.get('/users',checklogout.authAdmin, adminConstroller.user)
 
+////create posts
 router.get('/create',checklogout.authAdmin, adminConstroller.formCreate)
+
+router.post('/createct',checklogout.authAdmin, adminConstroller.CreateCtSm)
+
+router.get('/createct',checklogout.authAdmin, adminConstroller.formCreateCt)
+
+router.get('/categorys',checklogout.authAdmin, adminConstroller.getCategorys)
+
+router.delete('/category/delete:id',checklogout.authAdmin, adminConstroller.deleteCategory)
 
 router.post('/create',upload.single('thumbnail'),checklogout.authAdmin, adminConstroller.createPost)
 

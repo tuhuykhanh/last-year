@@ -1,4 +1,5 @@
 const PostModel = require('../models/Post')
+const CategoryModel = require('../models/Category')
 
 const { mutipleMongooseToObject } = require('../../util/handleBlockHbs')
 const { mongooseToObject } = require('../../util/handleBlockHbs')
@@ -8,9 +9,10 @@ const path = require('path');
 const PostController = {
 
     postDetail: async(req,res,next) => {
-       
+
         const post = await PostModel.findOne({slug:req.params.slug})
-        .populate('user')
+        .populate('user category')
+        await PostModel.updateOne({slug:req.params.slug},{views: post.views + 0.5})
         await res.render('post/postDetail',{
             post: mongooseToObject(post)
         })

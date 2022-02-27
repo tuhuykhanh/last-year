@@ -4,15 +4,23 @@
   --bgc: #DAF7A6;
   --btnbg-regis: #979A9A;
   --btnbg-signin: #40E0D0;
-  --bgbody: #AFD0D6; }
+  --bgbody: #FBFBFF; }
 
 .light-mode {
   --bgc: #E5E7E9;
   --bgbody: #FBFBFF; }
 
 .dark-mode {
-  --bgbody: #89A1EF;
+  --bgbody: #979A9A;
   --bgc: #5D6D7E; }
+
+.error {
+  color: red;
+  font-size: 1.5rem; }
+
+.notification {
+  color: green;
+  font-size: 1.5rem; }
 
 .btn {
   width: fit-content;
@@ -238,6 +246,58 @@
   to {
     transform: translateY(-5rem);
     opacity: 1; } }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+
+.spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1003;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden; }
+
+.spinner div:first-child {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  box-shadow: 0 3px 3px 0 #ff386a;
+  transform: translate3d(0, 0, 0);
+  animation: spin 2s linear infinite; }
+
+.spinner div:first-child:after,
+.spinner div:first-child:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%; }
+
+.spinner div:first-child:before {
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  box-shadow: 0 3px 3px 0 #ffe420;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite; }
+
+.spinner div:first-child:after {
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  box-shadow: 0 3px 3px 0 #3dafff;
+  animation: spin 1.5s linear infinite; }
 
 .container-login {
   width: 100%;
@@ -769,6 +829,29 @@
         background-color: #fff;
         font-size: 4rem;
         color: #F76229; }
+
+.scrolltop {
+  width: 5rem;
+  height: 5rem;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .5rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  background-image: linear-gradient(to right bottom, #ffa400, #ff6bcb);
+  cursor: pointer;
+  transform: scale(0);
+  color: #fff; }
+  .scrolltop.active {
+    transform: scale(1);
+    opacity: 1;
+    bottom: 4rem;
+    visibility: visible; }
 
 * {
   margin: 0;

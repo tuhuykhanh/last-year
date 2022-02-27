@@ -50,8 +50,14 @@ router.get('/activate/:token', accountConstroller.activeMail);
 router.post('/store', accountConstroller.store);
 
 
+router.post('/password_resets',accountConstroller.sendmailpass);
 
 router.get('/password_resets',accountConstroller.resetpassword);
+
+router.get('/reset/:userid',accountConstroller.newpassword);
+router.post('/reset/:userid',accountConstroller.newpasswordsm);
+
+
 
 
 module.exports = router;
