@@ -285,10 +285,9 @@
                     background-color: #fff;
                     font-size: 4rem;
                     color: #FF0101
-
                 }
             }
-            .instagram
+            .instagram  
             {
                 &:hover
                 {
@@ -306,6 +305,17 @@
 .container-cate 
 {
     padding: 3rem 9% 0;
+    position: relative;
+    &::before
+    {
+        content: '';
+        position: absolute;
+        bottom: -1.5rem;
+        left: 0;
+        height: .3rem;
+        width: 100%;
+        background-color: rgba(0,0,0,0.2);
+    }
     
     .categorys .list-category
     {
@@ -339,8 +349,8 @@
 ////scroll top click // 
 .scrolltop
 {
-    width: 5rem;
-    height: 5rem;
+    width: 4.5rem;
+    height: 4.5rem;
     font-size: 2.5rem;
     display: flex;
     justify-content: center;
@@ -354,6 +364,7 @@
     background-image:linear-gradient( to right bottom , #ffa400 ,#ff6bcb);;
     cursor: pointer;
     transform: scale(0);
+    transform: translateY(2rem);
     color: #fff;
     
     &.active
@@ -362,6 +373,7 @@
         opacity: 1;
         bottom: 4rem;
         visibility: visible;
+        transform: translateY(0);
     }
    
 }
@@ -373,4 +385,103 @@
    justify-content: center;
    align-items: center;
    border-radius: .5rem;
- } 
+ }
+
+///// most views ///
+.container-views
+{
+    .box-title
+    {
+        height: 4rem;
+        width: 100%;
+        border-top: .4rem solid #772014;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        background-color: rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+        .title
+        {
+            font-size: 2rem;
+        }
+    }
+    .box-post
+    {
+        display: flex;
+        align-items: center;
+        flex-wrap:wrap;
+        flex-direction: row-reverse;
+        height: fit-content;
+        padding: 0 1rem;
+        width: 100%;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+        &::before
+        {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            height: 0.2rem;
+            width: 100%;
+            background-color: rgba(0,0,0,.2);
+
+        }
+        .image
+        {
+            width: 30rem;
+            height: 15rem;
+            overflow: hidden;
+            flex-shrink: 0;
+            a{
+                display: block;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        .content
+        {   
+            flex: 1 1 60rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            .infor
+            {
+               .views
+               {
+                   font-size: 1rem;
+                   color: rgba(0,0,0,0.5)
+               }
+            }
+            a{
+                display: block;
+                margin-bottom: 1rem;
+                .title
+                {
+                    color: #212121;
+                    font-size: 2rem;
+                    font-weight: 600;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+            a{
+                display: block;
+              
+                .description
+                {
+                    color: #212121;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}

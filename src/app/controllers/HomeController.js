@@ -17,10 +17,12 @@ const HomeController = {
                 createdAt: -1
             }).populate('user')
             const category = await CategoryModel.find({})
-            
+
+            const mostview = await PostModel.find({}).sort({views: -1}).limit(5)
             await res.render('home', {
                 posts: mutipleMongooseToObject(post),
-                categorys: mutipleMongooseToObject(category)
+                categorys: mutipleMongooseToObject(category),
+                postmostviews: mutipleMongooseToObject(mostview),
             })
 
         } catch (error) {

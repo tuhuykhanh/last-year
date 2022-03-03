@@ -57,8 +57,8 @@
                 </ul>
             </div>
         </div>
-      {{!-- recent post --}}
-        <section class="section " id="posts" >
+        {{!-- recent post --}}
+        <section class="section " id="posts">
             <div class="section-title ">
                 <h2>Recent Posts</h2>
             </div>
@@ -86,12 +86,41 @@
                     </div>
                 </div>
                 {{/each}}
-
             </div>
 
         </section>
-        <section class="section" id="mostview">
-            <h1>most views</h1>
+        <section class="section-body" id="mostview">
+            <div class="container-views">
+                <div class="box-title">
+                    <h3 class="title">Most views</h3>
+                </div>
+                {{#each postmostviews}}
+                <div class="box-post">
+                    <div class="image">
+                        <a href="/post/{{this.slug}}">
+                            <img src="/{{this.thumbnail}}" alt="">
+                        </a>
+                    </div>
+                    <div class="content">
+                        <h4 class="infor"> 
+
+                            <span class="views">{{this.views}} views</span>
+                
+                        </h4>
+                        <a href="/post/{{this.slug}}">
+                            <h3 class="title">
+                                {{this.title}}
+                            </h3>
+                        </a>
+                        <a href="/post/{{this.slug}}">
+                            <p class="description">
+                               {{this.description}}
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
         </section>
     </div>
 </div>
