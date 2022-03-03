@@ -83,7 +83,7 @@ const AdminController = {
     post: async (req, res, next) => {
        
         try {
-            const post = await PostsModel.find({})
+            const post = await PostsModel.find({}).populate('category')
             if (!post)
                 res.send('dont have any post')
 
@@ -242,22 +242,19 @@ const AdminController = {
     },
     deleteCategory: async (req,res) => {
         try {
-    //   const blog = await PostsModel.findOne({category: req.params.id})
-    //   if(blog) 
-    //     return res.status(400).json({
-    //       msg: "Can not delete! In this category also exist blogs."
-    //     })
+      const blog = await PostsModel.findOne({category: req.params.id})
+      if(blog) 
+        return res.status(400).json({
+          msg: "Can not delete! In this category also exist posts."
+        })
       const category = await CategoryModel.findByIdAndDelete(req.params.id)
       if(!category) 
         return res.status(400).json({msg: "Category does not exists."})
-
       res.redirect('/admin/categorys')
     } catch (err) {
       return res.status(500).json({ msg: err.message })
     }
     }
 }
-
-
 
 module.exports = AdminController;

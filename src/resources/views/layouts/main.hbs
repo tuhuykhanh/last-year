@@ -21,17 +21,18 @@
         <header class="header">
                 {{> header}}
         </header>
+       
 
         <div class="container-body">
-                {{{body}}}
+                 {{{body}}}
         </div>
 
          <div class="spinner">
              <div class="blob blob-0"></div>
         </div>
-        <a href="#" class="scrolltop">
+        <div onclick="scrollToTop()" class="scrolltop">
                 <i class="fa-solid fa-arrow-up"></i>
-        </a>
+        </div>
 
         <footer class="footer">
                 {{> footer}}
@@ -47,16 +48,9 @@
 
                                 
                 const scrollToTop =() => {
-                const c = document.documentElement.scrollTop || document.body.scrollTop;
-                if(c>0){
-
-                        window.requestAnimationFrame(scrollToTop);
-                        window.scrollTo(0,c-c/8);
-
-                }
-
+                        window.scrollTo(0,0)
                 };
-                scrollToTop()
+
 
         </script>
 

@@ -34,17 +34,16 @@ html
 }
 body
 {
-    min-height: 500vh;
+   
     background-color: var(--bgbody);
 }
-.container-body
-{
-    // padding-top: 10rem;
-}
+
 .section{
-
     padding: 14rem 9% 5rem;
-
+}
+.category-pad
+{
+    margin-top: 14rem;
 }
 .header
 {
@@ -59,7 +58,7 @@ body
     align-items: center;
     justify-content: space-between;
     height: 10rem;
-    padding: 0 9%;
+    padding: 0 7%;
     z-index: 100;
     border-radius: 1.5rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
@@ -773,13 +772,103 @@ body
     }
 }
 
+//////related///
+
+.container-related
+{
+    .box-title
+    {
+        height: 5rem;
+        width: 100%;
+        background-color: rgba(0,0,0,0.2);
+        border-top: .4rem solid #772014;
+        margin-bottom: 2rem;
+        padding: 2rem;
+        display: flex;
+        align-items:center;
+        .title
+        {
+            color:  #772014;
+            font-size: 2rem;
+        }
+    }
+    .box-post
+    {
+        display: flex;
+        align-items: center;
+        flex-wrap:wrap;
+        height: fit-content;
+        width: 100%;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+        &::before
+        {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            height: 0.2rem;
+            width: 100%;
+            background-color: rgba(0,0,0,.2);
+
+        }
+        .image
+        {
+            width: 30rem;
+            height: 15rem;
+            overflow: hidden;
+            flex-shrink: 0;
+            a{
+                display: block;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        .content
+        {   
+            flex: 1 1 60rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            a{
+                display: block;
+                margin-bottom: 1rem;
+                .title
+                {
+                    color: #212121;
+                    font-size: 2rem;
+                    font-weight: 600;
+                }
+            }
+            a{
+                display: block;
+              
+                .description
+                {
+                    color: #212121;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                }
+            }
+  
+        }
+      
+    }
+}
+
+
 
 
 @media (max-width:1200px)
 {
     
     .top{
-        padding:3rem;
+        padding:3rem !important;
      }
   
      section{
@@ -887,7 +976,7 @@ body
     }
  
  }
-
+  
 
 
 

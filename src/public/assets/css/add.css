@@ -1,14 +1,60 @@
 *
 {
     transition:all .25s linear;
+   
 }
 section
 {
     margin-left: 17.5rem;
 }
+html
+{
+
+    overflow-x: hidden;
+}
+.header
+{
+    position: fixed;
+    left: 0 ;
+    right: 0;
+    top: -6rem;
+    height: 5rem;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    z-index: 10;
+}
+.header .bar-btn
+{
+    font-size: 25px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header .logo h2
+{
+    background-image:linear-gradient( to right bottom , #ffa400 ,#ff6bcb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.header .bar-btn:hover
+{
+    background-image:linear-gradient( to right bottom , #ffa400 ,#ff6bcb);
+    color: #fff;
+}
 .titlecolor
 {
     color: #3F0D12;
+}
+.titlecolor-clear
+{
+    color: #3f0d1281;
 }
 .user-info
 {
@@ -108,13 +154,18 @@ section
 {
     color: #4C2719;
 }
+.item-btn:hover .item-link .item-icon
+{
+    transform: scale(1.2);
+    color: #171219;
+}
 .item-btn:hover .item-link
 {
     background-color: #A4AF69;
 }
 .item-btn:hover .item-link span
 {
-    letter-spacing: .2rem;
+    letter-spacing: .15rem;
     color: #fff;
 }
 
@@ -305,3 +356,67 @@ section
     font-size: 1.5rem;
     
 }
+.list-items .none {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0 .5rem;   
+}
+.list-items .none li{
+    white-space: nowrap;
+}
+
+
+/*  bar controller  */
+
+
+aside.active
+{
+    left: -10px !important;
+}
+.fa-times
+{
+    transform: rotate(180deg);
+}
+
+
+
+
+/* responsive */
+
+
+@media (max-width:1200px)
+{
+    
+    
+  
+  
+}
+
+@media (max-width:991px)
+{
+  
+        .header
+        {
+            top: 0;
+        }
+        aside
+        {
+            top: 5rem !important; 
+            left: -20rem  !important;
+        }
+        section
+        {
+            margin-left: 0;
+            margin-top: 7rem;
+        }
+               
+}
+@media (max-width:450px){
+
+    .header .bar-btn
+    {
+        font-size: 20px;
+    }
+   
+ }

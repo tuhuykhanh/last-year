@@ -1,4 +1,5 @@
 const PostModel = require('../models/Post')
+const CategoryModel = require('../models/Category')
 const Author = require('../models/Author')
 var fs = require('fs');
 
@@ -14,10 +15,12 @@ const HomeController = {
 
             const post = await PostModel.find({}).sort({
                 createdAt: -1
-            })
-                .populate('user')
+            }).populate('user')
+            const category = await CategoryModel.find({})
+            
             await res.render('home', {
-                posts: mutipleMongooseToObject(post)
+                posts: mutipleMongooseToObject(post),
+                categorys: mutipleMongooseToObject(category)
             })
 
         } catch (error) {

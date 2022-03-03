@@ -3,7 +3,6 @@ const router = express.Router();
 const checklogout = require('../app/middlewares/CheckLogOut')
 const adminConstroller = require('../app/controllers/AdminController')
 
-
 const path = require('path');
 const multer  = require('multer')
 const storage = multer.diskStorage({

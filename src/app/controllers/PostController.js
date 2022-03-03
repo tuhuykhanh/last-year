@@ -12,9 +12,11 @@ const PostController = {
 
         const post = await PostModel.findOne({slug:req.params.slug})
         .populate('user category')
-        await PostModel.updateOne({slug:req.params.slug},{views: post.views + 0.5})
+        await PostModel.findOneAndUpdate({slug:req.params.slug},{views: post.views + 1 })
+        const postscates = await PostModel.find({category: post.category})
         await res.render('post/postDetail',{
-            post: mongooseToObject(post)
+            post: mongooseToObject(post),
+            postscates: mutipleMongooseToObject(postscates)
         })
     },
     getvalue: async (req, res, next) => {
@@ -26,9 +28,7 @@ const PostController = {
             res.send({payload: result})
 
         } catch (error) {
-
             return res.status(500).json({ msg: error.message })
-
         }
     }
 

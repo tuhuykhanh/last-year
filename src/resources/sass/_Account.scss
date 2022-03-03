@@ -463,6 +463,22 @@
         {
             margin-bottom: 1rem;
         }
+        .changepass
+        {
+            display: flex;
+            align-items:center;
+            gap: 2rem;
+            .password-btn
+            {
+                background-color: #AEBD93;
+                padding: 0.5rem 1rem;
+                border-radius: .5rem;
+                a
+                {
+                    color: #fff;
+                }
+            }
+        }
         .edit-btn
         {
             margin-top: 0.5rem;
@@ -476,6 +492,7 @@
                    line-height: 2.5;
                    color: #fff;
                }
+        
         }
                     
     }

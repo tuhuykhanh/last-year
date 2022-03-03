@@ -7,7 +7,7 @@
                 <span class="right">{{post.createdAt}}</span>
             </div>
             <h2 class="title">
-               {{post.title}}
+                {{post.title}}
             </h2>
         </div>
         <div class="post-body">
@@ -16,28 +16,57 @@
             </div>
             <div class="container-image">
                 <div class="image">
-                    <img src="/{{post.thumbnail}}"
-                        alt="thumbnail">
+                    <img src="/{{post.thumbnail}}" alt="thumbnail">
                 </div>
             </div>
 
             <div class="content">
                 {{{ post.content }}}
             </div>
-            
             <div class="contentreal">
-
             </div>
-
             <div class="author">
                 <h3 class="name">By: {{post.user.username}}</h3>
             </div>
 
         </div>
     </div>
+
 </section>
+<section class="section">
+
+    <div class="container-related">
+        <div class="box-title">
+            <h3 class="title">Bài viết liên quan</h3>
+        </div>   
+       {{#each postscates}} 
+            <div class="box-post">
+                <div class="image">
+                    <a href="/post/{{this.slug}}">
+                        <img src="/{{this.thumbnail}}"
+                            alt="">
+                    </a>
+                </div>
+                <div class="content">
+                    <a href="/post/{{this.slug}}">
+                        <h3 class="title">
+                           {{this.title}}
+                        </h3>
+                    </a>
+                    <a href="/post/{{this.slug}}">
+                        <p class="description">
+                            {{this.description}}
+                        </p>
+                    </a>
+                </div>
+            </div>
+        {{/each}}
+            
+    </div>
+</section>
+
+
 <script>
-       
-     
+
 
 </script>

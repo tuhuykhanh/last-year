@@ -3,7 +3,8 @@
 {   
     position: relative;
     margin-bottom: 3rem;
-
+    margin-top: -8rem;
+    
     &::before
     {
         content: '';
@@ -14,7 +15,6 @@
         width: 8rem;
         height: .5rem;
         background-color: #91171F;
-
     }
     
     h2{
@@ -38,13 +38,17 @@
         width: 35rem;
         height: 37rem;
         padding: 1rem;
-        background-color: #57737A;
+        // background-color: #57737A;
         border-radius: .5rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         cursor: pointer;
+        &:hover  .post-title a
+        {
+            color: #FF7F11;
+        }
         .post-image
         {
             width: 33rem;   
@@ -106,7 +110,7 @@
                 
                 display: block;
                 font-size: 2rem;
-                color: white;
+                color: black;
             }
         }  
     }
@@ -296,6 +300,42 @@
         }
     }
 }
+
+
+//categorys section
+.container-cate 
+{
+    padding: 3rem 9% 0;
+    
+    .categorys .list-category
+    {
+        list-style: none;
+        width: 100%;
+        display: flex;
+        align-items:center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        height: 4rem;
+        h3
+        {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+        .item 
+        {
+            &:hover a
+            {
+                color: red;
+            }
+            a{
+                display: inline-block;
+                font-size: 2rem;
+                color: #2C0703;
+            }
+        } 
+    }
+}
+
 ////scroll top click // 
 .scrolltop
 {
@@ -316,7 +356,6 @@
     transform: scale(0);
     color: #fff;
     
-
     &.active
     {
         transform: scale(1);
@@ -325,5 +364,13 @@
         visibility: visible;
     }
    
-
 }
+.icon-home-cate
+ {
+   background-color: rgba(0,0,0,0.2);
+   padding: 0.5rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: .5rem;
+ } 

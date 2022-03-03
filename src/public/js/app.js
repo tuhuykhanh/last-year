@@ -19,7 +19,7 @@ window.addEventListener('scroll', function(){
 
 window.addEventListener('scroll', function(){
     let scrolltop = window.pageYOffset 
-    if(scrolltop> 1000){  
+    if(scrolltop > 600){  
         scrollTopBtn.classList.add('active')   
     }else
     {
@@ -376,9 +376,6 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 }
 
 
-
-
-
 /////slick///
 // $(document).ready(function(){
 //     $('.container-home .home-page .background-header-slider .container-bg-im').slick({
@@ -390,3 +387,5 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 //         arrows: false
 //     });
 //   });
+
+
