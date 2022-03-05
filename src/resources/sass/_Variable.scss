@@ -322,6 +322,26 @@
     transform: rotate(360deg);
   }
 }
+@keyframes text{
+  from{
+      transform: translateX(-10rem);
+      opacity: 0;
+  }
+  to
+  {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+@keyframes blur{
+  from{
+      opacity: 0;
+    }
+    to
+    {
+      opacity: 1;
+    }
+}
 .spinner {
   position: fixed;
   top: 0;

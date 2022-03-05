@@ -1,6 +1,6 @@
 const PostModel = require('../models/Post')
 const CategoryModel = require('../models/Category')
-const Author = require('../models/Author')
+
 var fs = require('fs');
 
 const { mutipleMongooseToObject } = require('../../util/handleBlockHbs')

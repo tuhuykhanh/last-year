@@ -8,8 +8,13 @@ const port = 3000;
 const route = require('./routers/index')
 const db = require('./config/db/index')
 const methodOverride = require('method-override');
-const cors = require('cors')
 
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+const cors = require('cors')
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const fs = require('fs')
@@ -49,4 +54,24 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 
 route(app);
 
-app.listen(port,console.log(`app is runing with port ${port}`));
+///socket ///
+io.on('connection', (socket) => {
+   console.log('a user connected with id:' + socket.id);
+
+    socket.on('disconnect', ()=>{
+      console.log('1 user disconnected'+' '+ socket.id)
+    })
+
+    socket.on('comment', function(data){
+   
+      socket.broadcast.emit('send', data)
+     
+    })
+    socket.on('typing', function(data){
+        socket.broadcast.emit('usertyping', data )
+    })
+
+});
+
+
+server.listen(port,console.log(`app is runing with port ${port}`));

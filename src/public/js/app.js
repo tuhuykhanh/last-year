@@ -1,51 +1,47 @@
 //header scroll 
-var lastscrolltop  = 0;
+var lastscrolltop = 0;
 var header = document.querySelector('.header .top')
 
 const scrollTopBtn = document.querySelector('.scrolltop')
 
-window.addEventListener('scroll', function(){
-    let scrolltop = window.pageYOffset 
-    
-    if(scrolltop > lastscrolltop)
-    {
+window.addEventListener('scroll', function () {
+    let scrolltop = window.pageYOffset
+
+    if (scrolltop > lastscrolltop) {
         header.style.top = "-10rem";
-    }else
-    {   
-        header.style.top = '1rem'; 
+    } else {
+        header.style.top = '1rem';
     }
     lastscrolltop = scrolltop
 })
 
-window.addEventListener('scroll', function(){
-    let scrolltop = window.pageYOffset 
-    if(scrolltop > 600){  
-        scrollTopBtn.classList.add('active')   
-    }else
-    {
-        scrollTopBtn.classList.remove('active')   
+window.addEventListener('scroll', function () {
+    let scrolltop = window.pageYOffset
+    if (scrolltop > 600) {
+        scrollTopBtn.classList.add('active')
+    } else {
+        scrollTopBtn.classList.remove('active')
     }
-   
+
 })
 
-        
- //// HANDLE CLICK EVENT ////
+
+//// HANDLE CLICK EVENT ////
 
 //barsbtn  click 
 
 const barsbtn = document.querySelector('.btn-bars');
-const  navbar  = document.querySelector('.top .navbar')
-barsbtn.onclick =()=>
-{
+const navbar = document.querySelector('.top .navbar')
+barsbtn.onclick = () => {
     navbar.classList.toggle('active');
 }
 
 //line slide
-const navbtn  = document.querySelectorAll('.top .navbar a')
+const navbtn = document.querySelectorAll('.top .navbar a')
 const line = document.querySelector('.top .navbar .line')
-navbtn.forEach(  item =>{
-    item.onmousemove =(e)=>{
- 
+navbtn.forEach(item => {
+    item.onmousemove = (e) => {
+
         e.preventDefault()
         line.style.left = item.offsetLeft + 'px';
         line.style.width = item.offsetWidth + 'px';
@@ -65,15 +61,13 @@ const inputSearch = document.querySelector('.top .search-form .container-form fo
 //     searchBtn.classList.add('active');
 //     inputSearch.focus();
 // }
-closeBtnSearch.onclick = ()=>
-{
+closeBtnSearch.onclick = () => {
     formSearch.classList.remove('active')
     searchBtn.classList.remove('active');
 
 }
 
-window.onscroll =()=>
-{
+window.onscroll = () => {
     formSearch.classList.remove('active')
 }
 
@@ -85,19 +79,19 @@ const lightBtn = document.querySelector('.top .control .interface .control .ligh
 const defaultBtn = document.querySelector('.top .control .interface .control .default')
 const activeBtn = document.querySelectorAll('.top .control .interface .control .themeBtn.active')
 
-lightBtn.onclick = () =>{
-    
+lightBtn.onclick = () => {
+
     document.querySelector('.top .control .interface .control .themeBtn.active').classList.remove('active')
     lightBtn.classList.add('active')
 
     document.body.setAttribute('class', '')
     document.body.classList.add('light-mode');
 
-  
+
 
 }
-defaultBtn.onclick = () =>{
-    
+defaultBtn.onclick = () => {
+
     document.querySelector('.top .control .interface .control .themeBtn.active').classList.remove('active')
     defaultBtn.classList.add('active')
 
@@ -105,15 +99,15 @@ defaultBtn.onclick = () =>{
 
 
 }
-darkBtn.onclick = () =>{
-    
+darkBtn.onclick = () => {
+
     document.querySelector('.top .control .interface .control .themeBtn.active').classList.remove('active')
 
     document.body.setAttribute('class', '')
     document.body.classList.add('dark-mode');
 
     darkBtn.classList.add('active')
-    
+
 }
 
 
@@ -123,19 +117,17 @@ function clickclick({ title = '', message = '', type = 'info', duration = 2000 }
     if (main) {
 
         const toast = document.createElement('div');
-        const show = duration+1000;
-    
-       //auto remove toast
-       const autoremoveID =  setTimeout(function(){
+        const show = duration + 1000;
+
+        //auto remove toast
+        const autoremoveID = setTimeout(function () {
             main.removeChild(toast);
-        },show)
-       
+        }, show)
+
         //click remove toast
-       
-        toast.onclick=(e)=>
-        {
-            if(e.target.closest('.container__close'))
-            {
+
+        toast.onclick = (e) => {
+            if (e.target.closest('.container__close')) {
                 main.removeChild(toast);
                 clearTimeout(autoremoveID);
             }
@@ -148,7 +140,7 @@ function clickclick({ title = '', message = '', type = 'info', duration = 2000 }
         }
 
         const icon = icons[type]
-        const delay = (duration/1000).toFixed(2)
+        const delay = (duration / 1000).toFixed(2)
 
         toast.classList.add('container-toast', `container--${type}`);
         toast.style.animation = ` slideleft .3s linear,fadeout 1s linear forwards ${delay}s`;
@@ -187,8 +179,8 @@ function warning() {
         }
     )
 }
-function error(){
-   
+function error() {
+
     clickclick(
         {
             title: 'error',
@@ -223,7 +215,7 @@ function Validator(options) {
 
         // Lấy ra các rules của selector
         var rules = selectorRules[rule.selector];
-        
+
         // Lặp qua từng rule & kiểm tra
         // Nếu có lỗi thì dừng việc kiểm
         for (var i = 0; i < rules.length; ++i) {
@@ -239,7 +231,7 @@ function Validator(options) {
             }
             if (errorMessage) break;
         }
-        
+
         if (errorMessage) {
             errorElement.innerText = errorMessage;
             getParent(inputElement, options.formGroupSelector).classList.add('invalid');
@@ -256,7 +248,7 @@ function Validator(options) {
     if (formElement) {
         // Khi submit form
         formElement.onsubmit = function (e) {
-            
+
             e.preventDefault();
 
             var isFormValid = true;
@@ -275,8 +267,8 @@ function Validator(options) {
                 if (typeof options.onSubmit === 'function') {
                     var enableInputs = formElement.querySelectorAll('[name]');
                     var formValues = Array.from(enableInputs).reduce(function (values, input) {
-                        
-                        switch(input.type) {
+
+                        switch (input.type) {
                             case 'radio':
                                 values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
                                 break;
@@ -299,10 +291,10 @@ function Validator(options) {
 
                         return values;
                     }, {});
-                options.onSubmit(formValues);
+                    options.onSubmit(formValues);
                 }
                 // Trường hợp submit với hành vi mặc định
-                else { 
+                else {
                     formElement.submit();
                 }
             }
@@ -321,7 +313,7 @@ function Validator(options) {
             var inputElements = formElement.querySelectorAll(rule.selector);
 
             Array.from(inputElements).forEach(function (inputElement) {
-               // Xử lý trường hợp blur khỏi input
+                // Xử lý trường hợp blur khỏi input
                 inputElement.onblur = function () {
                     validate(inputElement, rule);
                 }
@@ -331,7 +323,7 @@ function Validator(options) {
                     var errorElement = getParent(inputElement, options.formGroupSelector).querySelector(options.errorSelector);
                     errorElement.innerText = '';
                     getParent(inputElement, options.formGroupSelector).classList.remove('invalid');
-                } 
+                }
             });
         });
     }
@@ -342,7 +334,7 @@ Validator.isRequired = function (selector, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value ? undefined :  message || 'please enter this field'
+            return value ? undefined : message || 'please enter this field'
         }
     };
 }
@@ -352,7 +344,7 @@ Validator.isEmail = function (selector, message) {
         selector: selector,
         test: function (value) {
             var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            return regex.test(value) ? undefined :  message || 'this field must be email';
+            return regex.test(value) ? undefined : message || 'this field must be email';
         }
     };
 }
@@ -361,7 +353,7 @@ Validator.minLength = function (selector, min, message) {
     return {
         selector: selector,
         test: function (value) {
-            return value.length >= min ? undefined :  message || `Please enter at least ${min} characters`;
+            return value.length >= min ? undefined : message || `Please enter at least ${min} characters`;
         }
     };
 }
@@ -387,5 +379,104 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 //         arrows: false
 //     });
 //   });
+
+///socket io 
+let socket = io()
+
+
+const slug = window.location.href.split('/').slice(-1)[0]
+const email = document.querySelector('#getemail').innerText.trim()
+const username = document.querySelector('.info-user .name').innerText
+
+const inputCmt = document.querySelector('.contentcomment')
+const sendBtn = document.querySelector('.btn-send-comment')
+const commentBox = document.querySelector('.comments-box')
+
+
+
+sendBtn.onclick = (e) => {
+    let comment = inputCmt.value
+    if (!comment) {
+        return
+    }
+    postComment(comment)
+
+    //socket.emit('client-send-cmt', comment)
+}
+function postComment(cmt) {
+    let data = {
+        username: username,
+        comment: cmt,
+        email: email,
+        slug: slug
+    }
+    appendToDom(data)
+    inputCmt.value = ''
+    socketsendcmt(data)
+    
+    syncWithDb(data)
+}
+function appendToDom(data) {
+
+    const box = document.createElement('div')
+    box.classList.add('box')
+
+    const html = ` 
+                <div class="avata">
+                    <img src="https://images.unsplash.com/photo-1646327642532-a8786340b19b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                        alt="image">
+                </div>
+
+                <div class="content">
+                   
+                    <div class="username">
+                        <h3>${data.username}</h3>
+                        <smal class="time">1 hour</smal>
+                    </div>
+                    <p>${data.comment}</p>
+                </div> `
+    box.innerHTML = html
+    commentBox.appendChild(box)
+}
+function socketsendcmt(data) {
+    socket.emit('comment', data)
+}
+socket.on('send', function (data) {
+    appendToDom(data)
+})
+
+inputCmt.onkeyup = (e) => {
+    socket.emit('typing', { username })
+}
+let timerId = null
+function debounce(func, timer) {
+    if (timerId) {
+        clearTimeout(timerId)
+    }
+    timerId = setTimeout(() => {
+        func()
+    }, timer)
+}
+const typingDiv = document.querySelector('.ontyping p')
+socket.on('usertyping', function (data) {
+    typingDiv.innerText = `${data.username} is typing...`
+    debounce(function () {
+        typingDiv.innerText = ''
+    }, 1500)
+})
+
+function syncWithDb(data) {
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+    fetch('/api/comment', { method: 'Post', body:  JSON.stringify(data), headers})
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+}
 
 
